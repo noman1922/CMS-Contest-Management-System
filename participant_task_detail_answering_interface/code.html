@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#264191", "on-tertiary-container": "#4ac08f", "error": "#ba1a1a", "on-tertiary": "#ffffff", "secondary-container": "#316bf3", "inverse-surface": "#283044", "surface-container-low": "#f2f3ff", "on-secondary": "#ffffff", "tertiary": "#003120", "surface-tint": "#4059aa", "outline-variant": "#c5c5d3", "on-secondary-fixed-variant": "#003ea8", "tertiary-fixed-dim": "#68dba9", "tertiary-container": "#004a32", "surface": "#faf8ff", "primary": "#00236f", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "background": "#faf8ff", "primary-fixed": "#dce1ff", "secondary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "inverse-primary": "#b6c4ff", "primary-fixed-dim": "#b6c4ff", "tertiary-fixed": "#85f8c4", "on-background": "#131b2e", "outline": "#757682", "surface-variant": "#dae2fd", "surface-bright": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-primary-fixed": "#00164e", "on-secondary-fixed": "#00174b", "on-secondary-container": "#fefcff", "on-surface-variant": "#444651", "on-tertiary-fixed-variant": "#005137", "secondary-fixed": "#dbe1ff", "secondary": "#0051d5", "surface-container-highest": "#dae2fd", "on-error": "#ffffff", "on-primary": "#ffffff", "on-tertiary-fixed": "#002114", "surface-dim": "#d2d9f4", "primary-container": "#1e3a8a", "on-surface": "#131b2e", "surface-container-high": "#e2e7ff", "on-primary-container": "#90a8ff", "surface-container": "#eaedff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "space-xs": "0.5rem", "space-lg": "1.5rem", "space-xl": "2rem", "space-sm": "0.75rem", "gutter-mobile": "1rem", "space-md": "1rem", "margin": "2rem", "margin-mobile": "1rem" }, "fontFamily": { "headline-sm": [ "Manrope" ], "headline-lg": [ "Manrope" ], "display-lg": [ "Manrope" ], "body-sm": [ "Inter" ], "headline-md": [ "Manrope" ], "body-md": [ "Inter" ], "body-lg": [ "Inter" ], "label-sm": [ "Inter" ], "label-lg": [ "Inter" ], "headline-lg-mobile": [ "Manrope" ], "label-md": [ "Inter" ] }, "fontSize": { "headline-sm": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "body-lg": [ "16px", { "lineHeight": "26px", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ], "headline-lg-mobile": [ "22px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Vectis Corporate Platform Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xe088MhAyR42GU7NECfPDHZoNiguBwFPVPlYGfR_8JJL9LDTeI1XDuyOb3DHbPCZGOi0LpUduA1_vU9JNucO5UCfNDjgWoFJCb_Om55dXqV8wiHelMmTSFjSWooMmKVaCz7UX-6ZuQAQEr8srimlmEcVd3lS91rx3axg0XZ72ZH8Frog6wxXwpmxzU9wE9RduYdK2s8PZmiNCUm40Ah0T42ZP4m9VniUTQuk0yaXhjbT6-yelZd1sLMGY"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Vectis Assess</span></div><div class="px-space-md py-space-xs"><div class="px-space-sm py-space-xs rounded-lg bg-surface-container-low mb-space-sm"><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Track</p><p class="font-label-md text-label-md text-on-surface truncate">Strategy &amp; Architecture</p></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="participant-dashboard" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span>Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary font-label-lg rounded-lg shadow-sm" data-path="participant-tasks" href="#"><span class="material-symbols-outlined text-xl">assignment</span><span>My Tasks</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="participant-leaderboard" href="#"><span class="material-symbols-outlined text-xl">leaderboard</span><span>Live Leaderboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="participant-progress" href="#"><span class="material-symbols-outlined text-xl">insights</span><span>My Progress</span></a></nav></div></div><div class="p-space-md"><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant">Active Mode</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed">Candidate</span></div><a class="flex items-center justify-center gap-space-xs px-space-sm py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-primary-container hover:text-on-primary transition-all font-label-sm text-label-sm shadow-[0_1px_3px_rgba(0,0,0,0.04)]" data-path="admin-dashboard" href="#"><span class="material-symbols-outlined text-sm">swap_horiz</span><span>Switch to Admin View</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-full px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm tracking-wide font-semibold text-tertiary-container">LIVE</span><span class="font-body-sm text-body-sm text-on-surface-variant">| Global Enterprise Strategy Challenge 2025</span></div><div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface"><span class="material-symbols-outlined text-base text-outline">timer</span><span class="font-label-md text-label-md font-mono">04h 32m 18s remaining</span></div></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Participant #027</div><button aria-label="Notifications" class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span></button><div class="flex items-center gap-space-xs pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkSUnla58ekSoq4cKWk6QVq9mWR091lU0nyg3yQfiBv368dUMIKyK97XHtz4XAZBWjjbzh6_xHpeCmcz_pD-Qfw0QznRVIuDjH05uW8Cb-c3T-TPPlGfmsN363MpWzNp6zjt-eK44l1kge6KRUz7c0vDm8UIYrT4doy3y9RfYH2HO7dtXMhfv0EW6pC9iDtz-UYExz1abtRABqZuoByUFXhxoqWF6OaYKZH-oNF_HUtS_MuCULLQuO"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Elena Rostova</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Candidate</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-lg py-space-lg"><div class="flex flex-col w-full">
+<!-- Sticky Context & Progress Bar -->
+<div class="sticky top-16 z-30 bg-surface-container-lowest/95 backdrop-blur-md px-space-lg py-3 shadow-sm mb-space-lg -mx-space-lg">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
+<!-- Breadcrumb & Context -->
+<div class="flex flex-col gap-0.5">
+<nav class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors" href="#">My Tasks</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="text-on-surface font-medium">Task 05: Integrated Business Challenge</span>
+</nav>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Task 05: Integrated Business Strategy Challenge</h1>
+<span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-container/10 text-secondary font-label-sm text-label-sm">
+            6 of 6 Complete
+          </span>
+</div>
+</div>
+<!-- Live Metadata Strip -->
+<div class="flex items-center flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-primary">military_tech</span>
+          100 Points Total
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-outline">schedule</span>
+          Est. 45 Mins
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-error">event</span>
+          Today, 18:00 UTC
+        </span>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed/40 text-tertiary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-tertiary-container">cloud_done</span>
+<span>Draft saved 1 min ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Bounds -->
+<div class="max-w-6xl mx-auto w-full flex flex-col gap-space-xl pb-24">
+<!-- Executive Instructions Notice Banner -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">gavel</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Assessment Protocol &amp; Evaluation Directives</h2>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">High Stakes Assessment</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Read all case materials and operational constraints thoroughly. Complete all 4 modular assessment sections below. Submissions undergo algorithmic integrity scoring and independent review by the Vectis Evaluation Directorate. All inputs are continuously encrypted and auto-synchronized.
+        </p>
+</div>
+</div>
+<!-- SECTION 1: Multiple Choice Questions (30 Points) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center font-headline-sm text-headline-sm text-primary">
+            01
+          </div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Section 1: Quantitative &amp; Strategic MCQs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Single-choice scenario selection • 3 Questions</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+          30 Points Total
+        </span>
+</div>
+<!-- Question 01 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-medium">Question 01 of 06</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Corporate Expansion</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">10 Points</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+          Which of the following market entry strategies offers the highest operational control while balancing capital expenditure risk?
+        </h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-1">
+<!-- Option A -->
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0 focus:ring-offset-0" name="q1" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option A</span>
+<span class="font-body-md text-body-md text-on-surface">Direct foreign subsidiary acquisition</span>
+</div>
+</label>
+<!-- Option B -->
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0 focus:ring-offset-0" name="q1" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option B</span>
+<span class="font-body-md text-body-md text-on-surface">Joint venture with local majority stakeholder</span>
+</div>
+</label>
+<!-- Option C (Selected) -->
+<label class="relative flex items-start gap-space-sm p-space-md rounded-lg bg-primary-fixed/20 shadow-sm cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q1" type="radio"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary font-bold">Option C</span>
+<span class="material-symbols-outlined text-base text-primary">check_circle</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Greenfield strategic business unit with phased capital deployment</span>
+</div>
+</label>
+<!-- Option D -->
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0 focus:ring-offset-0" name="q1" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option D</span>
+<span class="font-body-md text-body-md text-on-surface">Non-exclusive master licensing agreement</span>
+</div>
+</label>
+</div>
+</article>
+<!-- Question 02 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-medium">Question 02 of 06</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Competitive Advantage</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">10 Points</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+          In competitive positioning, what primary mechanism protects a firm’s economic moat against low-cost disruptive entrants?
+        </h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-1">
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q2" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option A</span>
+<span class="font-body-md text-body-md text-on-surface">Aggressive pricing discount campaigns</span>
+</div>
+</label>
+<label class="relative flex items-start gap-space-sm p-space-md rounded-lg bg-primary-fixed/20 shadow-sm cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q2" type="radio"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary font-bold">Option B</span>
+<span class="material-symbols-outlined text-base text-primary">check_circle</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">High customer switching costs integrated into platform software</span>
+</div>
+</label>
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q2" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option C</span>
+<span class="font-body-md text-body-md text-on-surface">Increasing promotional advertising spend</span>
+</div>
+</label>
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q2" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option D</span>
+<span class="font-body-md text-body-md text-on-surface">Shortening product refresh cycles without feature variance</span>
+</div>
+</label>
+</div>
+</article>
+<!-- Question 03 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-medium">Question 03 of 06</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Financial Metrics</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">10 Points</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+          What key metric best indicates whether an enterprise SaaS expansion motion is sustainable over a 3-year horizon?
+        </h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm pt-1">
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q3" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option A</span>
+<span class="font-body-md text-body-md text-on-surface">Gross Customer Acquisition Cost without payback period</span>
+</div>
+</label>
+<label class="relative flex items-start gap-space-sm p-space-md rounded-lg bg-primary-fixed/20 shadow-sm cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q3" type="radio"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary font-bold">Option B</span>
+<span class="material-symbols-outlined text-base text-primary">check_circle</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface font-medium">Net Revenue Retention (NRR) exceeding 115% with stable CAC payback under 14 months</span>
+</div>
+</label>
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q3" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option C</span>
+<span class="font-body-md text-body-md text-on-surface">Pure organic inbound impressions</span>
+</div>
+</label>
+<label class="group relative flex items-start gap-space-sm p-space-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer">
+<input class="mt-1 w-4 h-4 text-primary bg-surface-container-lowest focus:ring-0" name="q3" type="radio"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface font-medium">Option D</span>
+<span class="font-body-md text-body-md text-on-surface">Total headcount expansion rate</span>
+</div>
+</label>
+</div>
+</article>
+</section>
+<!-- SECTION 2: Written Answer Question (20 Points) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center font-headline-sm text-headline-sm text-primary">
+            02
+          </div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Section 2: Structured Strategic Synthesis</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Long-form written response with formatting support</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+          20 Points Total
+        </span>
+</div>
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-medium">Question 04 of 06</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Supply Chain Architecture</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">20 Points</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+            Explain how enterprise digital transformation improves cross-departmental supply chain resiliency during macroeconomic volatility.
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Focus on real-time telemetry, demand forecasting integrations, and vendor risk mitigation frameworks.
+          </p>
+</div>
+<!-- Rich Text Area Container -->
+<div class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<!-- Editor Toolbar -->
+<div class="flex items-center justify-between px-3 py-2 bg-surface-container-low">
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Bold" type="button">
+<span class="material-symbols-outlined text-lg">format_bold</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Italic" type="button">
+<span class="material-symbols-outlined text-lg">format_italic</span>
+</button>
+<div class="w-px h-4 bg-outline-variant/40 mx-1"></div>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Bullet List" type="button">
+<span class="material-symbols-outlined text-lg">format_list_bulleted</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Numbered List" type="button">
+<span class="material-symbols-outlined text-lg">format_list_numbered</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Blockquote" type="button">
+<span class="material-symbols-outlined text-lg">format_quote</span>
+</button>
+<div class="w-px h-4 bg-outline-variant/40 mx-1"></div>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Code Block" type="button">
+<span class="material-symbols-outlined text-lg">code</span>
+</button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-tertiary-container">sync</span>
+<span>Draft auto-saved</span>
+</div>
+</div>
+<!-- Text Area -->
+<textarea class="w-full p-4 bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none resize-y leading-relaxed" placeholder="Type your strategic analysis here..." rows="6">Enterprise digital transformation improves supply chain resiliency through real-time telemetry, automated demand re-forecasting, and unified visibility between ERP and third-party logistics. By decentralizing inventory buffers and employing algorithmic lead-time analysis, enterprise business units reduce bullwhip disruptions while ensuring vendor SLA compliance under volatile currency and trade fluctuations. Furthermore, cross-functional visibility breaks down silos between procurement and customer fulfillment, accelerating incident response times from weeks to hours.</textarea>
+<!-- Text Area Footer -->
+<div class="flex items-center justify-between px-4 py-2.5 bg-surface-container-low/60">
+<span class="font-label-sm text-label-sm text-on-surface-variant">438 / 2000 characters (min. 150 required)</span>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-highest text-on-surface hover:bg-surface-container text-label-sm font-label-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+<span>Save Answer Draft</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- SECTION 3: Admin Case Document & Qualitative Analysis (20 Points) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center font-headline-sm text-headline-sm text-primary">
+            03
+          </div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Section 3: Case Document Investigation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Admin document inspection and bottleneck remediation</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+          20 Points Total
+        </span>
+</div>
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-medium">Question 05 of 06</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Case Study Memo Review</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">20 Points</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+          Read the attached confidential case study document and answer the operational prompt below.
+        </h4>
+<!-- Attached Admin PDF Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Global_Supply_Disruption_Case_Study_2025.pdf</span>
+<span class="px-2 py-0.2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">Admin Verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2.4 MB • Uploaded by Vectis Evaluation Directorate • 8 Pages</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3 py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md text-label-md shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-base text-primary">visibility</span>
+<span>View PDF Inline</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-on-surface-variant hover:text-on-surface shadow-sm transition-colors" title="Open in New Tab" type="button">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Embedded Document Excerpt Preview Mockup -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-md flex flex-col gap-3">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-outline">description</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider text-on-surface uppercase">Document Preview: Excerpt Page 4</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">CLASSIFIED // INTERNAL ASSESS ONLY</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-low/50 flex flex-col gap-2 font-mono text-body-sm text-on-surface-variant leading-relaxed">
+<p class="font-bold text-on-surface font-headline-sm">MEMORANDUM: PHASE 2 SUPPLY BOTTLENECK AUDIT</p>
+<p>"...Analysis indicates critical single-point supplier fragility for Grade-4 microcontroller assemblies located within the Southeast Asia procurement corridor. Lead times expanded from 42 days to 148 days during Q1 volatility. Secondary assembly lines experienced a 38% capacity degradation due to unbuffered inventory buffers..."</p>
+</div>
+</div>
+<!-- Question Prompt & Written Input -->
+<div class="flex flex-col gap-2 pt-2">
+<label class="font-headline-sm text-headline-sm text-on-surface">
+            Based on the attached document, identify the primary operational bottleneck in Phase 2 and propose a 90-day remediation schedule.
+          </label>
+<div class="flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<textarea class="w-full p-4 bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:outline-none resize-y leading-relaxed" placeholder="State the bottleneck clearly and articulate a 30-60-90 day remediation cadence..." rows="5">The primary bottleneck identified on page 4 lies in the single-source procurement bottleneck for microcontroller sub-assemblies. A 90-day remediation must execute: 1) Dual-sourcing qualification within 30 days, 2) Buffer inventory ramp to 45 days, 3) Implementation of dynamic supplier risk scores across tier-1 and tier-2 providers to flag disruptions 14 days in advance.</textarea>
+<div class="flex items-center justify-between px-4 py-2.5 bg-surface-container-low/60">
+<span class="font-label-sm text-label-sm text-on-surface-variant">382 / 2000 characters</span>
+<span class="font-label-sm text-label-sm text-tertiary-container font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check</span> Requirement Met
+              </span>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- SECTION 4: Candidate Artifact Upload (30 Points) -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center font-headline-sm text-headline-sm text-primary">
+            04
+          </div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Section 4: Strategic Roadmap Document Submission</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Upload deliverables and executive deck</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-md text-label-md">
+          30 Points Total
+        </span>
+</div>
+<article class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-medium">Question 06 of 06</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Executive Deliverable</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">30 Points</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface leading-snug">
+            Upload your comprehensive strategic roadmap solution as a single PDF document.
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Ensure your document adheres to the corporate evaluation rubric: Executive Summary, Strategic Milestones, Risk Mitigation Matrix, and Financial ROI Projections.
+          </p>
+</div>
+<!-- Drag & Drop Zone -->
+<div class="p-space-xl rounded-xl bg-surface-container-low/70 hover:bg-surface-container-low transition-colors flex flex-col items-center justify-center text-center cursor-pointer group">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary mb-space-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface">
+            Drag &amp; Drop your finalized PDF here, or <span class="text-secondary font-semibold underline decoration-2">Browse Files</span>
+</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Accepted format: Adobe Acrobat .PDF • Maximum file size: 10 MB
+          </p>
+</div>
+<!-- Uploaded File State Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Participant027_Strategic_Roadmap_Vectis2025.pdf</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+                  Uploaded &amp; Verified
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1.8 MB • Uploaded 4 mins ago • SHA-256 Checksum Passed</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm shadow-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>Preview</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container font-label-sm text-label-sm shadow-sm transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-sm">sync</span>
+<span>Replace File</span>
+</button>
+<button class="p-1.5 rounded-lg text-error hover:bg-error-container/30 transition-colors" title="Remove Uploaded File" type="button">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+</div>
+<!-- Sticky Bottom Submission Bar -->
+<footer class="fixed bottom-0 left-72 right-0 bg-surface-container-lowest/95 backdrop-blur-xl py-3 px-space-lg shadow-xl z-40">
+<div class="max-w-6xl mx-auto flex items-center justify-between">
+<!-- Sync Status -->
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Auto-saved at 16:42 UTC</span>
+<span class="hidden md:inline font-body-sm text-body-sm text-on-surface-variant">• 6 of 6 items addressed</span>
+</div>
+<!-- Action Group -->
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-colors" type="button">
+          Save Draft
+        </button>
+<button class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container font-label-md text-label-md transition-colors" type="button">
+          Save &amp; Continue Later
+        </button>
+<button class="px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all flex items-center gap-2 shadow-sm" onclick="document.getElementById('submission-modal').classList.remove('hidden')" type="button">
+<span>Submit Task</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+</footer>
+<!-- Submission Confirmation Modal -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="submission-modal">
+<div class="bg-surface-container-lowest max-w-md w-full rounded-2xl p-space-xl shadow-xl flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Are you sure you want to submit Task 05?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Once submitted, your answers will be permanently locked for evaluation. You have answered all 6 questions and attached the required roadmap deliverable.
+        </p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1 text-label-sm font-label-sm">
+<div class="flex items-center justify-between text-on-surface">
+<span>Candidate Record:</span>
+<span class="font-mono">#027 Elena Rostova</span>
+</div>
+<div class="flex items-center justify-between text-on-surface">
+<span>Total Evaluation Value:</span>
+<span class="font-bold text-primary">100 Points</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-colors" onclick="document.getElementById('submission-modal').classList.add('hidden')" type="button">
+          Cancel / Keep Editing
+        </button>
+<button class="px-5 py-2 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold transition-colors flex items-center gap-1.5" onclick="alert('Assessment submission successful. Redirecting to evaluation overview...'); document.getElementById('submission-modal').classList.add('hidden')" type="button">
+<span>Confirm Submission</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

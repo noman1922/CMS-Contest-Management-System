@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 60" fill="none">
+  <!-- Brand Icon Badge -->
+  <rect x="4" y="10" width="40" height="40" rx="10" fill="#0F2D6B"/>
+  <path d="M14 36L24 16L34 36" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 29H30" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="24" cy="14" r="2.5" fill="#38BDF8"/>
+  
+  <!-- Typography -->
+  <text x="54" y="31" font-family="Manrope, Inter, system-ui, sans-serif" font-size="19" font-weight="800" fill="#0F172A" letter-spacing="-0.5">ACI</text>
+  <text x="96" y="31" font-family="Manrope, Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#2563EB" letter-spacing="0.5">CAREER EDGE</text>
+  <text x="55" y="46" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700" fill="#64748B" letter-spacing="2">PROGRAM</text>
+</svg>

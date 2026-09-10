@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#264191", "on-tertiary-container": "#4ac08f", "error": "#ba1a1a", "on-tertiary": "#ffffff", "secondary-container": "#316bf3", "inverse-surface": "#283044", "surface-container-low": "#f2f3ff", "on-secondary": "#ffffff", "tertiary": "#003120", "surface-tint": "#4059aa", "outline-variant": "#c5c5d3", "on-secondary-fixed-variant": "#003ea8", "tertiary-fixed-dim": "#68dba9", "tertiary-container": "#004a32", "surface": "#faf8ff", "primary": "#00236f", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "background": "#faf8ff", "primary-fixed": "#dce1ff", "secondary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "inverse-primary": "#b6c4ff", "primary-fixed-dim": "#b6c4ff", "tertiary-fixed": "#85f8c4", "on-background": "#131b2e", "outline": "#757682", "surface-variant": "#dae2fd", "surface-bright": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-primary-fixed": "#00164e", "on-secondary-fixed": "#00174b", "on-secondary-container": "#fefcff", "on-surface-variant": "#444651", "on-tertiary-fixed-variant": "#005137", "secondary-fixed": "#dbe1ff", "secondary": "#0051d5", "surface-container-highest": "#dae2fd", "on-error": "#ffffff", "on-primary": "#ffffff", "on-tertiary-fixed": "#002114", "surface-dim": "#d2d9f4", "primary-container": "#1e3a8a", "on-surface": "#131b2e", "surface-container-high": "#e2e7ff", "on-primary-container": "#90a8ff", "surface-container": "#eaedff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "1.5rem", "space-xs": "0.5rem", "space-lg": "1.5rem", "space-xl": "2rem", "space-sm": "0.75rem", "gutter-mobile": "1rem", "space-md": "1rem", "margin": "2rem", "margin-mobile": "1rem" }, "fontFamily": { "headline-sm": [ "Manrope" ], "headline-lg": [ "Manrope" ], "display-lg": [ "Manrope" ], "body-sm": [ "Inter" ], "headline-md": [ "Manrope" ], "body-md": [ "Inter" ], "body-lg": [ "Inter" ], "label-sm": [ "Inter" ], "label-lg": [ "Inter" ], "headline-lg-mobile": [ "Manrope" ], "label-md": [ "Inter" ] }, "fontSize": { "headline-sm": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "headline-lg": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-lg": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "body-lg": [ "16px", { "lineHeight": "26px", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ], "headline-lg-mobile": [ "22px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Vectis Corporate Platform Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xe088MhAyR42GU7NECfPDHZoNiguBwFPVPlYGfR_8JJL9LDTeI1XDuyOb3DHbPCZGOi0LpUduA1_vU9JNucO5UCfNDjgWoFJCb_Om55dXqV8wiHelMmTSFjSWooMmKVaCz7UX-6ZuQAQEr8srimlmEcVd3lS91rx3axg0XZ72ZH8Frog6wxXwpmxzU9wE9RduYdK2s8PZmiNCUm40Ah0T42ZP4m9VniUTQuk0yaXhjbT6-yelZd1sLMGY"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Vectis Assess</span></div><div class="px-space-md py-space-xs"><div class="px-space-sm py-space-xs rounded-lg bg-surface-container-low mb-space-sm"><p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Track</p><p class="font-label-md text-label-md text-on-surface truncate">Strategy &amp; Architecture</p></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary font-label-lg rounded-lg shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="participant-dashboard" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="participant-tasks" href="#"><span class="material-symbols-outlined text-xl">assignment</span><span>My Tasks</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary font-label-lg rounded-lg shadow-sm" data-path="participant-leaderboard" href="#"><span class="material-symbols-outlined text-xl">leaderboard</span><span>Live Leaderboard</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="participant-progress" href="#"><span class="material-symbols-outlined text-xl">insights</span><span>My Progress</span></a></nav></div></div><div class="p-space-md"><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant">Active Mode</span><span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed">Candidate</span></div><a class="flex items-center justify-center gap-space-xs px-space-sm py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-primary-container hover:text-on-primary transition-all font-label-sm text-label-sm shadow-[0_1px_3px_rgba(0,0,0,0.04)]" data-path="admin-dashboard" href="#"><span class="material-symbols-outlined text-sm">swap_horiz</span><span>Switch to Admin View</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-full px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm tracking-wide font-semibold text-tertiary-container">LIVE</span><span class="font-body-sm text-body-sm text-on-surface-variant">| Global Enterprise Strategy Challenge 2025</span></div><div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface"><span class="material-symbols-outlined text-base text-outline">timer</span><span class="font-label-md text-label-md font-mono">04h 32m 18s remaining</span></div></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Participant #027</div><button aria-label="Notifications" class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span></button><div class="flex items-center gap-space-xs pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkSUnla58ekSoq4cKWk6QVq9mWR091lU0nyg3yQfiBv368dUMIKyK97XHtz4XAZBWjjbzh6_xHpeCmcz_pD-Qfw0QznRVIuDjH05uW8Cb-c3T-TPPlGfmsN363MpWzNp6zjt-eK44l1kge6KRUz7c0vDm8UIYrT4doy3y9RfYH2HO7dtXMhfv0EW6pC9iDtz-UYExz1abtRABqZuoByUFXhxoqWF6OaYKZH-oNF_HUtS_MuCULLQuO"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Elena Rostova</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Candidate</span></div></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg">
+<!-- Header Section with Live Status & System Metadata -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1.5">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Live Contest Leaderboard</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-ping"></span>
+<span>LIVE • Real-time scoring updates</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-outline">sync</span>
+<span>Last updated: <span class="font-semibold text-on-surface" id="sync-time">Just now</span> (auto-refresh every 30s)</span>
+</span>
+<span class="text-outline-variant">•</span>
+<span class="font-semibold text-primary">500 Registered Participants</span>
+</p>
+</div>
+<!-- Right Header Actions: Refresh & Export -->
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" id="manual-refresh-btn" type="button">
+<span class="material-symbols-outlined text-base">refresh</span>
+<span>Refresh Feed</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Operational Fairness Notice Banner -->
+<div class="flex items-start gap-space-sm px-space-md py-space-sm rounded-xl bg-surface-container-low shadow-sm">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">verified_user</span>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 w-full">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<span class="font-semibold text-on-surface">Fairness &amp; Identity Protocol:</span> For fairness and participant privacy, only official Participant IDs are displayed. Real-time tie-breakers are calculated based on submission timestamps.
+      </p>
+<span class="font-label-sm text-label-sm text-secondary font-semibold whitespace-nowrap self-start sm:self-auto uppercase tracking-wider">ISO 27001 Certified Evaluator</span>
+</div>
+</div>
+<!-- 'Your Position' Personal Performance Spotlight Card (Level 2 Elevation) -->
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-surface-container via-surface-container-low to-surface-container-high p-space-lg shadow-sm">
+<!-- Subtle architectural background glow -->
+<div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-primary-fixed opacity-40 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<!-- Left Column: Rank + Core Identity -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-lg min-w-0">
+<div class="flex items-center justify-center w-20 h-20 rounded-2xl bg-primary text-on-primary shadow-md">
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">Rank</span>
+<span class="font-display-lg text-display-lg leading-none font-extrabold tracking-tight">#27</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex flex-wrap items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Participant #027</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wide">YOU</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Top 5.4%</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span>Enterprise Strategy &amp; Systems Track</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center text-on-tertiary-container font-semibold font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>↑ 3 spots in the last hour</span>
+</span>
+</p>
+</div>
+</div>
+<!-- Center & Right Metrics Bento Cluster -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+<!-- Metric 1: Current Score -->
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Score</span>
+<span class="font-headline-lg text-headline-lg font-bold text-primary tabular-nums mt-0.5">640 <span class="text-sm font-normal text-on-surface-variant">pts</span></span>
+<span class="font-body-sm text-body-sm text-outline mt-1">Accuracy: 91.4%</span>
+</div>
+<!-- Metric 2: Tasks Completed -->
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Completed</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface tabular-nums">7</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">/ 10</span>
+</div>
+<!-- Progress bar -->
+<div class="w-full bg-surface-container-high rounded-full h-1.5 mt-2 overflow-hidden">
+<div class="bg-secondary-container h-1.5 rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<!-- Metric 3: Delta to #026 -->
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Nearest Lead</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface mt-1">15 pts</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">behind #026</span>
+</div>
+<!-- Metric 4: Delta to Top 20 -->
+<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Threshold</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-secondary mt-1">45 pts</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">to Top 20 benchmark</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Grid: Leaderboard (8 Cols) + Tactical Strategy Sidebar (4 Cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left: Leaderboard Content Workspace (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Table Search & Filter Bar Controls -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[220px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl pointer-events-none">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-lg bg-surface font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-secondary/20" id="participant-search" placeholder="Search Participant ID (e.g. #027, #087)..." type="text"/>
+</div>
+<!-- Filter Chips & Sort Select -->
+<div class="flex flex-wrap items-center gap-2">
+<!-- Filter Tabs -->
+<div class="flex items-center p-1 rounded-lg bg-surface-container-low">
+<button class="px-3 py-1.5 rounded-md bg-surface-container-lowest font-label-sm text-label-sm text-primary shadow-sm font-semibold" type="button">All (500)</button>
+<button class="px-3 py-1.5 rounded-md font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface" type="button">Top 50</button>
+<button class="px-3 py-1.5 rounded-md font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface" type="button">Cohort Alpha</button>
+</div>
+<!-- Sort Dropdown -->
+<div class="relative">
+<select aria-label="Sort participants" class="h-10 pl-3 pr-8 rounded-lg bg-surface font-label-md text-label-md text-on-surface appearance-none focus:outline-none cursor-pointer">
+<option>Highest Score (Default)</option>
+<option>Tasks Completed</option>
+<option>Recent Movement</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Professional Data Table Card -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-4 w-16" scope="col">Rank</th>
+<th class="py-3 px-4" scope="col">Participant ID</th>
+<th class="py-3 px-4" scope="col">Score</th>
+<th class="py-3 px-4" scope="col">Tasks</th>
+<th class="py-3 px-4" scope="col">Trend</th>
+<th class="py-3 px-4 text-right" scope="col">Last Submission</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-surface-container-high/40" id="leaderboard-body">
+<!-- Rank 1 (Gold) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface tabular-nums">
+<div class="flex items-center gap-1.5">
+<span class="text-xl">🥇</span>
+<span>1</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-primary">#087</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant">Cohort A</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold tabular-nums">
+                    980 <span class="text-xs font-normal opacity-80 ml-1">pts</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">10/10</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-on-surface-variant font-semibold">
+<span>—</span>
+<span class="text-xs">0</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  4 mins ago
+                </td>
+</tr>
+<!-- Rank 2 (Silver) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface tabular-nums">
+<div class="flex items-center gap-1.5">
+<span class="text-xl">🥈</span>
+<span>2</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-primary">#231</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant">Cohort B</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-surface-container-highest text-primary font-headline-sm text-headline-sm font-bold tabular-nums">
+                    950 <span class="text-xs font-normal text-on-surface-variant ml-1">pts</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">10/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-on-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-sm">north</span>
+<span>1</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  8 mins ago
+                </td>
+</tr>
+<!-- Rank 3 (Bronze) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface tabular-nums">
+<div class="flex items-center gap-1.5">
+<span class="text-xl">🥉</span>
+<span>3</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-primary">#112</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant">Cohort A</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-surface-container-highest text-primary font-headline-sm text-headline-sm font-bold tabular-nums">
+                    920 <span class="text-xs font-normal text-on-surface-variant ml-1">pts</span>
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">9/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-error font-semibold">
+<span class="material-symbols-outlined text-sm">south</span>
+<span>1</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  12 mins ago
+                </td>
+</tr>
+<!-- Rank 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-label-lg text-label-lg text-on-surface-variant tabular-nums pl-8">4</td>
+<td class="py-3.5 px-4">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#044</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tabular-nums">900 <span class="text-xs font-normal text-on-surface-variant">pts</span></span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">9/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-outline font-semibold">—</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  15 mins ago
+                </td>
+</tr>
+<!-- Rank 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-label-lg text-label-lg text-on-surface-variant tabular-nums pl-8">5</td>
+<td class="py-3.5 px-4">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#301</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tabular-nums">880 <span class="text-xs font-normal text-on-surface-variant">pts</span></span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">9/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-on-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-sm">north</span>
+<span>2</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  22 mins ago
+                </td>
+</tr>
+<!-- Rank 6 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-label-lg text-label-lg text-on-surface-variant tabular-nums pl-8">6</td>
+<td class="py-3.5 px-4">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#194</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tabular-nums">860 <span class="text-xs font-normal text-on-surface-variant">pts</span></span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">9/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-outline font-semibold">—</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  25 mins ago
+                </td>
+</tr>
+<!-- Rank 7 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-label-lg text-label-lg text-on-surface-variant tabular-nums pl-8">7</td>
+<td class="py-3.5 px-4">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#405</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tabular-nums">845 <span class="text-xs font-normal text-on-surface-variant">pts</span></span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">8/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-on-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-sm">north</span>
+<span>4</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  30 mins ago
+                </td>
+</tr>
+<!-- Truncation / Gap Row indicator -->
+<tr class="bg-surface-container-low/30">
+<td class="py-2.5 px-4 text-center text-outline font-label-sm text-label-sm tracking-widest" colspan="6">
+                  •••••• 19 PARTICIPANTS CURRENTLY IN RANKS 8 - 26 ••••••
+                </td>
+</tr>
+<!-- Rank 27: CURRENT LOGGED-IN PARTICIPANT (PROMINENT HIGHLIGHT) -->
+<tr class="bg-primary-fixed/30 hover:bg-primary-fixed/40 transition-colors" id="my-participant-row">
+<td class="py-4 px-4 font-headline-md text-headline-md text-primary font-bold tabular-nums pl-6">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span>27</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-extrabold text-primary">#027</span>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider font-bold">YOU</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-3 py-1 rounded-md bg-secondary text-on-secondary font-headline-sm text-headline-sm font-bold tabular-nums shadow-sm">
+                    640 <span class="text-xs font-normal opacity-90 ml-1">pts</span>
+</span>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">7 / 10 Completed</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-md text-label-md text-on-tertiary-container font-extrabold">
+<span class="material-symbols-outlined text-base">north</span>
+<span>3</span>
+</span>
+</td>
+<td class="py-4 px-4 text-right font-label-sm text-label-sm text-primary font-semibold whitespace-nowrap">
+                  12 mins ago
+                </td>
+</tr>
+<!-- Rank 28 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-label-lg text-label-lg text-on-surface-variant tabular-nums pl-8">28</td>
+<td class="py-3.5 px-4">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#342</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tabular-nums">635 <span class="text-xs font-normal text-on-surface-variant">pts</span></span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">7/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-error font-semibold">
+<span class="material-symbols-outlined text-sm">south</span>
+<span>2</span>
+</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  14 mins ago
+                </td>
+</tr>
+<!-- Rank 29 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 font-label-lg text-label-lg text-on-surface-variant tabular-nums pl-8">29</td>
+<td class="py-3.5 px-4">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">#511</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="font-headline-sm text-headline-sm font-bold text-primary tabular-nums">620 <span class="text-xs font-normal text-on-surface-variant">pts</span></span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">6/10</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-0.5 font-label-sm text-label-sm text-outline font-semibold">—</span>
+</td>
+<td class="py-3.5 px-4 text-right font-body-sm text-body-sm text-on-surface-variant whitespace-nowrap">
+                  35 mins ago
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Quick Actions Footer -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm p-space-md bg-surface-container-lowest">
+<div class="flex items-center gap-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+              Showing <span class="font-semibold text-on-surface">1 - 25</span> of <span class="font-semibold text-on-surface">500</span> participants
+            </span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary hover:text-on-secondary font-label-sm text-label-sm font-semibold transition-all" id="jump-to-me-btn" type="button">
+<span class="material-symbols-outlined text-sm">my_location</span>
+<span>Jump to My Rank (#27)</span>
+</button>
+</div>
+<!-- Clean Next / Prev Controls -->
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg text-outline opacity-40 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center" type="button">1</button>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm flex items-center justify-center" type="button">2</button>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm flex items-center justify-center" type="button">3</button>
+<span class="px-1 text-outline font-label-sm text-label-sm">...</span>
+<button class="w-8 h-8 rounded-lg text-on-surface-variant hover:bg-surface-container font-label-sm text-label-sm flex items-center justify-center" type="button">20</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Strategic Intelligence & Contest Guidelines (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Card: Scoring Breakdown Rules -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">rule</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Scoring Rules</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">v2.4 Spec</span>
+</div>
+<div class="flex flex-col gap-3 font-body-sm text-body-sm text-on-surface-variant">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Base Assessment Points</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">100 pts / task</span>
+</div>
+<p>10 calibrated architectural challenges worth up to 1,000 baseline score units.</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Velocity Bonus</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-bold">+10 to +25 pts</span>
+</div>
+<p>Awarded to first 10 verified correct submissions per task within 20 minutes of challenge open.</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Precision &amp; Deductions</span>
+<span class="font-label-sm text-label-sm text-error font-bold">-5 pts / failed run</span>
+</div>
+<p>Automated test suite penalties apply for excessive compilation or syntax retries.</p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Tie-Breaking Logic</span>
+<span class="font-label-sm text-label-sm text-outline font-bold">Timestamp UTC</span>
+</div>
+<p>Equal scores resolve strictly by earlier submission timestamp of the final verified task.</p>
+</div>
+</div>
+</div>
+<!-- Card: Contest Schedule & Milestone Tracker -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">event_upcoming</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Contest Schedule</h3>
+</div>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-on-tertiary-container font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+            Stage 2 Active
+          </span>
+</div>
+<div class="relative flex flex-col gap-space-md pl-4">
+<!-- Continuous track line -->
+<div class="absolute left-1.5 top-2 bottom-2 w-0.5 bg-surface-container-high"></div>
+<!-- Milestone 1: Passed -->
+<div class="relative flex items-start gap-space-sm">
+<div class="w-3.5 h-3.5 rounded-full bg-tertiary-container -ml-4 mt-1 ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">09:00 UTC • Completed</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Challenge Opening &amp; Tasks 1 - 4</span>
+</div>
+</div>
+<!-- Milestone 2: Current Active -->
+<div class="relative flex items-start gap-space-sm">
+<div class="w-3.5 h-3.5 rounded-full bg-secondary -ml-4 mt-1 ring-4 ring-secondary-fixed"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">12:00 UTC • Current Phase</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Complex Systems Modeling (Tasks 5 - 8)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Stage locks at 16:00 UTC</span>
+</div>
+</div>
+<!-- Milestone 3: Upcoming -->
+<div class="relative flex items-start gap-space-sm opacity-60">
+<div class="w-3.5 h-3.5 rounded-full bg-outline-variant -ml-4 mt-1 ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">16:30 UTC • Next</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Final Architecture Sprint (Tasks 9 - 10)</span>
+</div>
+</div>
+<!-- Milestone 4: Freeze & Verification -->
+<div class="relative flex items-start gap-space-sm opacity-60">
+<div class="w-3.5 h-3.5 rounded-full bg-outline-variant -ml-4 mt-1 ring-4 ring-surface-container-lowest"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">18:00 UTC</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Leaderboard Freeze &amp; Audit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Cohort Summary Stats Mini Widget -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Cohort Alpha Diagnostic</span>
+<div class="flex items-center justify-between mt-1">
+<span class="font-body-sm text-body-sm text-on-surface">Median Score:</span>
+<span class="font-label-md text-label-md font-bold text-on-surface tabular-nums">580 pts</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Target Cutoff (Top 10%):</span>
+<span class="font-label-md text-label-md font-bold text-secondary tabular-nums">710 pts</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Proctor Compliance:</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">100% Clear</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Script for micro-interactions (search filter, scroll to rank, manual refresh) -->
+<script>
+    (function() {
+      // Jump to My Rank action
+      const jumpBtn = document.getElementById('jump-to-me-btn');
+      const myRow = document.getElementById('my-participant-row');
+      if (jumpBtn && myRow) {
+        jumpBtn.addEventListener('click', () => {
+          myRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          myRow.classList.add('animate-pulse');
+          setTimeout(() => {
+            myRow.classList.remove('animate-pulse');
+          }, 1600);
+        });
+      }
+
+      // Search filtering simulation
+      const searchInput = document.getElementById('participant-search');
+      const tableRows = document.querySelectorAll('#leaderboard-body tr');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          tableRows.forEach(row => {
+            // Ignore gap indicator
+            if (row.children.length === 1) return;
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+          });
+        });
+      }
+
+      // Manual refresh button animation & timestamp update
+      const refreshBtn = document.getElementById('manual-refresh-btn');
+      const syncTimeSpan = document.getElementById('sync-time');
+      if (refreshBtn && syncTimeSpan) {
+        refreshBtn.addEventListener('click', () => {
+          const icon = refreshBtn.querySelector('.material-symbols-outlined');
+          if (icon) icon.classList.add('animate-spin');
+          syncTimeSpan.textContent = 'Updating...';
+          setTimeout(() => {
+            if (icon) icon.classList.remove('animate-spin');
+            syncTimeSpan.textContent = 'Just now';
+          }, 600);
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>
