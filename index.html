@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Sign In</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+</head>
+<body style="display:flex; flex-direction:column; min-height:100vh; background:#f8fafc;">
+
+  <!-- Minimal Header -->
+  <header style="height:64px; border-bottom:1px solid var(--color-outline-variant); background:#ffffff; display:flex; align-items:center; justify-content:space-between; padding:0 32px;">
+    <div class="flex items-center gap-2">
+      <img src="assets/logo.svg" alt="ACI Career Edge Program Logo" style="height:32px; width:auto;"/>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="demo-mode-pill">DEMO MODE</span>
+      <button class="btn btn-outline btn-sm" onclick="StorageService.resetDemoData(); UI.showToast('Demo data reset.', 'info');">
+        <span class="material-symbols-outlined" style="font-size:16px;">restart_alt</span>
+        Reset Demo
+      </button>
+    </div>
+  </header>
+
+  <!-- Login Container -->
+  <main style="flex:1; display:flex; align-items:center; justify-content:center; padding:40px 20px;">
+    <div style="max-width:440px; width:100%;">
+      
+      <div class="q-card-simple" style="padding:32px; box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+        <div style="margin-bottom:24px; text-align:center;">
+          <h1 class="font-headline font-bold text-on-surface" style="font-size:1.6rem; margin:0;">
+            Sign In
+          </h1>
+          <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:6px;">
+            Choose a role to sign in to the demo contest.
+          </p>
+        </div>
+
+        <!-- Role Selector Tab -->
+        <div style="background:var(--color-surface-container-low); padding:4px; border-radius:var(--radius-lg); margin-bottom:20px; display:grid; grid-template-columns:1fr 1fr; gap:4px;">
+          <button type="button" class="filter-btn active" id="tab-admin" onclick="selectLoginRole('admin')" style="padding:8px; font-size:13px;">
+            Admin
+          </button>
+          <button type="button" class="filter-btn" id="tab-participant" onclick="selectLoginRole('participant')" style="padding:8px; font-size:13px;">
+            Participant
+          </button>
+        </div>
+
+        <!-- Credentials Form -->
+        <form id="login-form" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="login-email" id="login-label">Email or Phone Number</label>
+            <input type="text" id="login-email" class="form-input" required value="admin@demo.com" placeholder="e.g. +8801700000027 or participant@demo.com"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password / Access Code</label>
+            <input type="password" id="login-password" class="form-input" required value="admin123" placeholder="Enter password or access code"/>
+          </div>
+
+          <div id="login-error-msg" style="display:none; color:var(--color-error); font-size:12px; margin-bottom:12px; font-weight:600;"></div>
+
+          <button type="submit" class="btn btn-primary w-full" style="width:100%; padding:12px; font-size:14px; justify-content:center; margin-top:6px;">
+            <span>Sign In</span>
+            <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+          </button>
+        </form>
+
+        <!-- Quick 1-Click Demo Logins -->
+        <div style="margin-top:24px; padding-top:16px; border-top:1px solid var(--color-outline-variant);">
+          <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--color-on-surface-variant); font-weight:700; display:block; margin-bottom:8px;">
+            Quick Demo Logins:
+          </span>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <button type="button" class="btn btn-outline btn-sm" style="justify-content:center;" onclick="quickFill('admin@demo.com', 'admin123')">
+              Admin Demo
+            </button>
+            <button type="button" class="btn btn-outline btn-sm" style="justify-content:center;" onclick="quickFill('+8801700000027', '123456')">
+              Participant Demo
+            </button>
+          </div>
+          <div style="margin-top:8px; text-align:center;">
+            <a href="javascript:void(0)" onclick="quickFill('participant@demo.com', '123456')" style="font-size:11px; color:var(--color-secondary); text-decoration:none;">
+              Or sign in with email: participant@demo.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer style="text-align:center; padding:16px; color:var(--color-on-surface-variant); font-size:12px;">
+    ACI Career Edge Program • Closed Enterprise Contest Platform Demo
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/ui.js"></script>
+
+  <script>
+    function selectLoginRole(role) {
+      const emailInp = document.getElementById('login-email');
+      const passInp = document.getElementById('login-password');
+      const tabAdmin = document.getElementById('tab-admin');
+      const tabPart = document.getElementById('tab-participant');
+
+      if (role === 'admin') {
+        tabAdmin.classList.add('active');
+        tabPart.classList.remove('active');
+        emailInp.value = 'admin@demo.com';
+        passInp.value = 'admin123';
+      } else {
+        tabPart.classList.add('active');
+        tabAdmin.classList.remove('active');
+        emailInp.value = '+8801700000027';
+        passInp.value = '123456';
+      }
+    }
+
+    function quickFill(email, pass) {
+      document.getElementById('login-email').value = email;
+      document.getElementById('login-password').value = pass;
+      document.getElementById('login-form').dispatchEvent(new Event('submit'));
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-password').value;
+      const res = AuthService.login(email, pass);
+
+      if (res.success) {
+        UI.showToast(`Signed in successfully as ${res.user.name || res.user.role}`, 'success');
+        setTimeout(() => {
+          window.location.href = res.redirect;
+        }, 300);
+      } else {
+        const errEl = document.getElementById('login-error-msg');
+        errEl.textContent = res.message;
+        errEl.style.display = 'block';
+        UI.showToast(res.message, 'error');
+      }
+    }
+  </script>
+</body>
+</html>
