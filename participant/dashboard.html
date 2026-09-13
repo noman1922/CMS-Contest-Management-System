@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Participant Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+</head>
+<body class="app-shell">
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Simplified Participant Sidebar -->
+  <aside class="app-sidebar">
+    <div class="flex flex-col">
+      <div class="sidebar-header">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" class="sidebar-logo"/>
+      </div>
+      <div style="padding:0 16px 12px;">
+        <a href="contests.html" class="btn-back-contests w-full" style="width:100%; justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+      </div>
+      <div class="sidebar-nav-container">
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link active">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="tasks.html" class="nav-link">
+            <span class="material-symbols-outlined">assignment</span>
+            <span>Tasks</span>
+          </a>
+          <a href="leaderboard.html" class="nav-link">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span>Leaderboard</span>
+          </a>
+          <a href="progress.html" class="nav-link">
+            <span class="material-symbols-outlined">insights</span>
+            <span>My Progress</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-outline btn-sm w-full" style="width:100%; justify-content:center;" onclick="AuthService.switchRole('admin')">
+          <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          <span>Switch to Admin</span>
+        </button>
+        <button type="button" class="btn btn-logout w-full" style="width:100%; justify-content:center;" onclick="AuthService.logout()">
+          <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Clean Top Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="flex items-center gap-3">
+        <a href="contests.html" class="btn-back-contests">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+        <span style="color:var(--color-outline); font-size:16px;">/</span>
+        <span class="font-headline font-bold text-on-surface" style="font-size:1.05rem;" id="header-contest-title">Business Challenge 2026</span>
+        <span class="demo-mode-pill">DEMO MODE · Participant</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <!-- One-Click Role Switch -->
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('admin')" title="Switch to Admin Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Admin</span>
+      </button>
+
+      <!-- Profile Menu Dropdown -->
+      <div class="profile-menu-container">
+        <button type="button" class="profile-trigger-btn" id="participant-profile-btn">
+          <img id="user-header-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="avatar-sm"/>
+          <span style="font-size:12px; font-weight:600; color:var(--color-on-surface);">Elena Rostova</span>
+          <span class="material-symbols-outlined" style="font-size:16px; color:var(--color-on-surface-variant);">expand_more</span>
+        </button>
+
+        <div class="profile-dropdown-menu" id="participant-profile-dropdown">
+          <div style="padding:10px 12px; border-bottom:1px solid var(--color-surface-container-high);">
+            <div style="font-size:13px; font-weight:700; color:var(--color-on-surface);">Elena Rostova</div>
+            <div style="font-size:11px; color:var(--color-on-surface-variant);">Participant #027</div>
+          </div>
+          <a href="profile.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">person</span>
+              <span>View Profile</span>
+            </span>
+          </a>
+          <a href="contests.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">trophy</span>
+              <span>My Contests</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.switchRole('admin')" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">admin_panel_settings</span>
+              <span>Switch to Admin Demo</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.logout()" class="contest-dropdown-item" style="color:var(--color-error);">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+              <span>Logout</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container: Clean 4-Section Layout -->
+  <main class="app-main">
+    <div class="content-container flex flex-col gap-6" style="max-width:860px; padding:28px 20px 80px;">
+
+      <!-- SECTION 1: Welcome & Progress -->
+      <div class="q-card-simple" style="padding:24px;">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
+          <div>
+            <h1 class="font-headline font-bold text-on-surface" style="font-size:1.35rem; margin:0;" id="participant-greeting">
+              Welcome back, Participant #027
+            </h1>
+            <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:2px;" id="dashboard-contest-name">
+              Contest: <strong>Business Challenge 2026</strong>
+            </p>
+          </div>
+          <span class="badge badge-success font-semibold" id="participant-progress-badge">7 of 10 tasks completed</span>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="flex justify-between items-center mb-1.5" style="font-size:12px; color:var(--color-on-surface-variant);">
+            <span>Progress</span>
+            <span class="font-bold text-primary" id="contest-progress-text">7 of 10 tasks completed (70%)</span>
+          </div>
+          <div style="background:var(--color-surface-container-high); height:10px; border-radius:var(--radius-full); overflow:hidden;">
+            <div id="contest-progress-bar" style="background:var(--color-primary); height:100%; border-radius:var(--radius-full); width:70%; transition:width 0.4s ease;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: CURRENT TASK -->
+      <div>
+        <h2 class="font-headline font-bold text-on-surface mb-3" style="font-size:1.05rem; letter-spacing:0.02em; text-transform:uppercase;">
+          Current Task
+        </h2>
+        <div class="q-card-simple" style="border-left: 4px solid var(--color-primary); padding:24px;" id="dashboard-current-task-box">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="badge badge-primary font-bold">Task 05</span>
+                <span class="badge badge-secondary font-semibold">In Progress</span>
+              </div>
+              <h3 class="font-headline font-bold text-on-surface" style="font-size:1.25rem; margin:0;">
+                Business Challenge
+              </h3>
+              <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:4px;">
+                6 Questions • 100 Points
+              </p>
+            </div>
+            <a href="task.html?id=task-05" class="btn btn-primary" style="padding:10px 20px;">
+              <span>Continue Task</span>
+              <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: OTHER TASKS -->
+      <div>
+        <div class="flex justify-between items-center mb-3">
+          <h2 class="font-headline font-bold text-on-surface" style="font-size:1.05rem; letter-spacing:0.02em; text-transform:uppercase; margin:0;">
+            Other Tasks
+          </h2>
+          <a href="tasks.html" style="font-size:13px; color:var(--color-primary); font-weight:600; text-decoration:none;">
+            View All Tasks →
+          </a>
+        </div>
+        
+        <div id="participant-tasks-list" class="flex flex-col gap-2">
+          <!-- Rendered dynamically by participant.js into simple, clean rows -->
+        </div>
+      </div>
+
+      <!-- SECTION 4: CURRENT RANK -->
+      <div>
+        <h2 class="font-headline font-bold text-on-surface mb-3" style="font-size:1.05rem; letter-spacing:0.02em; text-transform:uppercase;">
+          Current Rank
+        </h2>
+        <div class="q-card-simple" style="padding:24px;">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div class="flex items-center gap-6">
+              <div>
+                <span style="font-size:12px; color:var(--color-on-surface-variant); display:block;">Your Rank</span>
+                <span class="font-headline font-bold text-primary" style="font-size:2rem; line-height:1.1;" id="metric-rank">#27</span>
+              </div>
+              <div style="border-left:1px solid var(--color-outline-variant); height:36px;"></div>
+              <div>
+                <span style="font-size:12px; color:var(--color-on-surface-variant); display:block;">Total Score</span>
+                <span class="font-headline font-bold text-on-surface" style="font-size:2rem; line-height:1.1;" id="metric-score">640</span>
+                <span style="font-size:12px; color:var(--color-on-surface-variant);"> points</span>
+              </div>
+            </div>
+
+            <a href="leaderboard.html" class="btn btn-outline">
+              <span class="material-symbols-outlined" style="font-size:18px;">leaderboard</span>
+              <span>View Leaderboard</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/scoring.js"></script>
+  <script src="../js/monitoring.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/participant.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      ParticipantModule.initDashboard();
+    });
+  </script>
+</body>
+</html>
