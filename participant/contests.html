@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - My Contests</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body style="display:flex; flex-direction:column; min-height:100vh; background:#f8fafc;">
+
+  <!-- Global Header -->
+  <header style="height:64px; border-bottom:1px solid var(--color-outline-variant); background:#ffffff; display:flex; align-items:center; justify-content:space-between; padding:0 32px; position:sticky; top:0; z-index:100;">
+    <div class="flex items-center gap-4">
+      <a href="contests.html" class="flex items-center gap-2" style="text-decoration:none;">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program" style="height:30px; width:auto;"/>
+      </a>
+      <span style="color:var(--color-outline); font-size:18px;">/</span>
+      <span class="font-headline font-semibold text-on-surface" style="font-size:15px;">My Contests</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="demo-mode-pill">DEMO MODE · Participant</span>
+
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('admin')" title="Switch to Admin Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Admin</span>
+      </button>
+
+      <!-- Profile Menu Dropdown -->
+      <div class="profile-menu-container">
+        <button type="button" class="profile-trigger-btn" id="profile-dropdown-btn" onclick="toggleProfileDropdown()">
+          <img id="user-header-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="avatar-sm"/>
+          <span id="user-header-name" style="font-size:13px; font-weight:600; color:var(--color-on-surface);">Elena Rostova</span>
+          <span class="material-symbols-outlined" style="font-size:16px; color:var(--color-on-surface-variant);">expand_more</span>
+        </button>
+
+        <div class="profile-dropdown-menu" id="profile-dropdown-menu">
+          <div style="padding:10px 12px; border-bottom:1px solid var(--color-surface-container-high);">
+            <div id="menu-user-name" style="font-size:13px; font-weight:700; color:var(--color-on-surface);">Elena Rostova</div>
+            <div id="menu-user-id" style="font-size:11px; color:var(--color-on-surface-variant);">Participant #027</div>
+          </div>
+          <a href="profile.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">person</span>
+              <span>View Profile</span>
+            </span>
+          </a>
+          <a href="contests.html" class="contest-dropdown-item active">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">trophy</span>
+              <span>My Contests</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.switchRole('admin')" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">admin_panel_settings</span>
+              <span>Switch to Admin Demo</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.logout()" class="contest-dropdown-item" style="color:var(--color-error);">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+              <span>Logout</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="flex:1; max-width:1040px; width:100%; margin:0 auto; padding:32px 24px;">
+
+    <!-- Welcome Greeting Header -->
+    <div style="margin-bottom:32px;">
+      <h1 class="font-headline font-bold text-on-surface" id="participant-greeting" style="font-size:1.75rem; margin:0 0 6px 0;">
+        Welcome, Elena
+      </h1>
+      <p style="font-size:14px; color:var(--color-on-surface-variant); margin:0;" id="participant-id-display">
+        Participant #027 • Select an eligible contest below to enter your workspace.
+      </p>
+    </div>
+
+    <!-- Section Header -->
+    <div class="flex items-center justify-between" style="margin-bottom:20px;">
+      <div>
+        <h2 class="font-headline font-bold text-on-surface" style="font-size:1.15rem; margin:0;">
+          MY CONTESTS
+        </h2>
+        <span style="font-size:12px; color:var(--color-on-surface-variant);">
+          Contests assigned to your account
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2" id="contest-filter-tabs">
+        <button class="filter-btn active" onclick="filterContests('all')">All</button>
+        <button class="filter-btn" onclick="filterContests('live')">Live</button>
+        <button class="filter-btn" onclick="filterContests('upcoming')">Upcoming</button>
+        <button class="filter-btn" onclick="filterContests('completed')">Completed</button>
+      </div>
+    </div>
+
+    <!-- Contests List Container -->
+    <div id="contests-grid" style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Populated dynamically via JavaScript -->
+    </div>
+
+  </main>
+
+  <footer style="text-align:center; padding:20px; color:var(--color-on-surface-variant); font-size:12px; border-top:1px solid var(--color-outline-variant); background:#ffffff;">
+    ACI Career Edge Program • Closed Enterprise Contest Platform Demo
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <script>
+    let currentParticipant = null;
+    let activeFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      currentParticipant = AuthService.requireAuth('participant');
+      if (!currentParticipant) return;
+
+      renderHeaderInfo();
+      renderContests();
+
+      // Close dropdowns on outside click
+      document.addEventListener('click', (e) => {
+        const btn = document.getElementById('profile-dropdown-btn');
+        const menu = document.getElementById('profile-dropdown-menu');
+        if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('show');
+        }
+      });
+    });
+
+    function toggleProfileDropdown() {
+      const menu = document.getElementById('profile-dropdown-menu');
+      if (menu) menu.classList.toggle('show');
+    }
+
+    function renderHeaderInfo() {
+      const user = StorageService.getUser(currentParticipant.participantId) || currentParticipant;
+      const greetingEl = document.getElementById('participant-greeting');
+      const idEl = document.getElementById('participant-id-display');
+      const headerName = document.getElementById('user-header-name');
+      const headerAvatar = document.getElementById('user-header-avatar');
+      const menuName = document.getElementById('menu-user-name');
+      const menuId = document.getElementById('menu-user-id');
+
+      const firstName = (user.name || '').split(' ')[0] || 'Participant';
+      if (greetingEl) greetingEl.textContent = `Welcome, ${firstName}`;
+      if (idEl) idEl.textContent = `Participant ${user.participantId || '#027'} • Select an eligible contest below to enter your workspace.`;
+      if (headerName) headerName.textContent = user.name || 'Elena Rostova';
+      if (menuName) menuName.textContent = user.name || 'Elena Rostova';
+      if (menuId) menuId.textContent = `Participant ${user.participantId || '#027'}`;
+      if (headerAvatar && user.avatar) headerAvatar.src = user.avatar;
+    }
+
+    function filterContests(status) {
+      activeFilter = status;
+      const tabs = document.querySelectorAll('#contest-filter-tabs .filter-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+      const activeTab = Array.from(tabs).find(t => t.textContent.toLowerCase() === status);
+      if (activeTab) activeTab.classList.add('active');
+      renderContests();
+    }
+
+    function renderContests() {
+      const container = document.getElementById('contests-grid');
+      if (!container) return;
+
+      const allContests = StorageService.getContests();
+      const myPid = currentParticipant.participantId || '#027';
+
+      // Filter contests where participant is enrolled and not archived
+      let eligible = allContests.filter(c => {
+        const pList = c.participantIds || [];
+        const isAssigned = pList.includes(myPid);
+        const status = (typeof getContestStatus === 'function' ? getContestStatus(c) : c.status).toLowerCase();
+        return isAssigned && status !== 'archived';
+      });
+
+      if (activeFilter !== 'all') {
+        eligible = eligible.filter(c => {
+          const status = (typeof getContestStatus === 'function' ? getContestStatus(c) : c.status).toLowerCase();
+          return status === activeFilter;
+        });
+      }
+
+      if (eligible.length === 0) {
+        container.innerHTML = `
+          <div class="q-card-simple" style="padding:48px; text-align:center; color:var(--color-on-surface-variant);">
+            <span class="material-symbols-outlined" style="font-size:40px; margin-bottom:12px; color:var(--color-outline);">emoji_events</span>
+            <h3 class="font-bold text-on-surface" style="font-size:16px; margin:0 0 6px 0;">No Contests Found</h3>
+            <p style="font-size:13px; margin:0;">
+              ${activeFilter === 'all' ? 'You are not assigned to any active contests at this time.' : 'No ' + activeFilter + ' contests found.'}
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      const user = StorageService.getUser(myPid) || currentParticipant;
+      const userProgress = `${user.tasksCompleted || 7} / 10`;
+
+      container.innerHTML = eligible.map(c => {
+        const status = (typeof getContestStatus === 'function' ? getContestStatus(c) : c.status).toLowerCase();
+        const tasks = StorageService.getTasks(c.id);
+        const taskCount = tasks.length || (c.taskIds ? c.taskIds.length : 10);
+
+        let badgeClass = 'badge-neutral';
+        let badgeLabel = status.toUpperCase();
+        let borderClass = '';
+        let actionBtn = '';
+
+        if (status === 'live') {
+          badgeClass = 'badge-success';
+          badgeLabel = 'LIVE';
+          borderClass = 'card-live';
+          actionBtn = `
+            <button class="btn btn-primary" onclick="enterContest('${c.id}')" style="padding:10px 24px; font-weight:700;">
+              <span>Enter Contest</span>
+              <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+            </button>
+          `;
+        } else if (status === 'upcoming') {
+          badgeClass = 'badge-warning';
+          badgeLabel = 'UPCOMING';
+          borderClass = 'card-upcoming';
+          actionBtn = `
+            <button class="btn btn-outline" onclick="UI.showToast('Contest has not started yet. Starts on ${c.startDate || 'scheduled date'}.', 'info')" style="padding:10px 20px;">
+              <span>View Details</span>
+            </button>
+          `;
+        } else if (status === 'completed') {
+          badgeClass = 'badge-neutral';
+          badgeLabel = 'COMPLETED';
+          borderClass = 'card-completed';
+          actionBtn = `
+            <button class="btn btn-outline" onclick="enterContest('${c.id}')" style="padding:10px 20px;">
+              <span>View Results</span>
+            </button>
+          `;
+        } else {
+          badgeClass = 'badge-neutral';
+          badgeLabel = 'DRAFT';
+          actionBtn = `<span style="font-size:13px; color:var(--color-on-surface-variant);">Not available</span>`;
+        }
+
+        const startDateDisplay = c.startDate ? new Date(c.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '25 Sep 2026';
+        const endDateDisplay = c.endDate ? new Date(c.endDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '30 Sep 2026';
+
+        return `
+          <div class="contest-card ${borderClass}">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3" style="margin-bottom:6px;">
+                  <span class="badge ${badgeClass} font-bold" style="font-size:11px; padding:3px 10px; text-transform:uppercase;">
+                    ${badgeLabel}
+                  </span>
+                  <span style="font-size:12px; color:var(--color-on-surface-variant); font-weight:500;">
+                    ${c.track || 'General Challenge'}
+                  </span>
+                </div>
+                <h3 class="font-headline font-bold text-on-surface" style="font-size:1.35rem; margin:0 0 6px 0;">
+                  ${c.name}
+                </h3>
+                <p style="font-size:13px; color:var(--color-on-surface-variant); margin:0; line-height:1.4; max-width:650px;">
+                  ${c.description || 'Enterprise assessment and challenge workspace.'}
+                </p>
+              </div>
+            </div>
+
+            <!-- Meta Grid -->
+            <div class="contest-meta-grid">
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Starts</span>
+                <span class="contest-meta-value">${startDateDisplay}</span>
+              </div>
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Ends</span>
+                <span class="contest-meta-value">${endDateDisplay}</span>
+              </div>
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Total Tasks</span>
+                <span class="contest-meta-value">${taskCount} Tasks</span>
+              </div>
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Your Progress</span>
+                <span class="contest-meta-value" style="color:var(--color-primary);">${status === 'upcoming' ? 'Not Started' : userProgress}</span>
+              </div>
+            </div>
+
+            <!-- Card Action Footer -->
+            <div class="flex items-center justify-between" style="padding-top:4px;">
+              <span style="font-size:12px; color:var(--color-on-surface-variant);">
+                ${status === 'live' ? '● Live workspace active' : (status === 'upcoming' ? 'Opens soon' : 'Contest concluded')}
+              </span>
+              <div>
+                ${actionBtn}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function enterContest(contestId) {
+      StorageService.setCurrentContestId(contestId);
+      window.location.href = `dashboard.html?contest=${contestId}`;
+    }
+  </script>
+</body>
+</html>

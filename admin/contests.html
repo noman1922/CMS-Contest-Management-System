@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Admin Contest Management</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body class="admin-layout" style="background:#f8fafc;">
+
+  <!-- Minimal Top Header -->
+  <header style="height:64px; border-bottom:1px solid var(--color-outline-variant); background:#ffffff; display:flex; align-items:center; justify-content:space-between; padding:0 32px; position:sticky; top:0; z-index:100;">
+    <div class="flex items-center gap-4">
+      <a href="contests.html" class="flex items-center gap-2" style="text-decoration:none;">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" style="height:32px; width:auto;"/>
+      </a>
+      <span style="color:var(--color-outline); font-size:18px;">/</span>
+      <span class="font-headline font-semibold text-on-surface" style="font-size:15px;">Contest Management</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="demo-mode-pill">DEMO MODE · Admin</span>
+
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('participant')" title="Switch to Participant Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Participant</span>
+      </button>
+
+      <button type="button" class="btn-logout" onclick="AuthService.logout()">
+        <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main style="max-width:1120px; width:100%; margin:0 auto; padding:32px 24px;">
+
+    <!-- Header Actions -->
+    <div class="flex items-center justify-between" style="margin-bottom:28px;">
+      <div>
+        <h1 class="font-headline font-bold text-on-surface" style="font-size:1.85rem; margin:0 0 6px 0;">
+          Contests
+        </h1>
+        <p style="font-size:14px; color:var(--color-on-surface-variant); margin:0;">
+          Create, schedule, configure, and manage enterprise assessment competitions.
+        </p>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="openCreateContestModal()" style="padding:10px 20px; font-weight:700;">
+        <span class="material-symbols-outlined" style="font-size:18px;">add</span>
+        <span>Create Contest</span>
+      </button>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="flex items-center justify-between" style="margin-bottom:20px;">
+      <div class="flex items-center gap-2" id="admin-contest-filters">
+        <button class="filter-btn active" onclick="setContestFilter('all')">All</button>
+        <button class="filter-btn" onclick="setContestFilter('live')">Live</button>
+        <button class="filter-btn" onclick="setContestFilter('upcoming')">Upcoming</button>
+        <button class="filter-btn" onclick="setContestFilter('completed')">Completed</button>
+        <button class="filter-btn" onclick="setContestFilter('archived')">Archived</button>
+        <button class="filter-btn" onclick="setContestFilter('draft')">Draft</button>
+      </div>
+
+      <div style="font-size:13px; color:var(--color-on-surface-variant);" id="contests-count-display">
+        Showing all contests
+      </div>
+    </div>
+
+    <!-- Contests List -->
+    <div id="admin-contests-list" style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Populated dynamically -->
+    </div>
+
+  </main>
+
+  <!-- Create Contest Modal -->
+  <div class="modal-overlay" id="modal-create-contest">
+    <div class="modal-dialog" style="max-width:680px;">
+      <div class="modal-header">
+        <h2 class="font-headline font-bold text-on-surface" style="font-size:1.25rem; margin:0;">
+          Create New Contest
+        </h2>
+        <button type="button" class="icon-btn" onclick="closeCreateContestModal()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="create-contest-form" onsubmit="handleCreateContest(event)">
+        <div class="modal-body">
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label" for="new-contest-name">Contest Name</label>
+            <input type="text" id="new-contest-name" class="form-input" required placeholder="e.g. Marketing Challenge 2026"/>
+          </div>
+
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label" for="new-contest-desc">Description</label>
+            <textarea id="new-contest-desc" class="form-textarea" rows="2" placeholder="Brief outline of the contest scope..."></textarea>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+            <div class="form-group">
+              <label class="form-label" for="new-contest-start-date">Start Date</label>
+              <input type="date" id="new-contest-start-date" class="form-input" required value="2026-10-01"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-contest-start-time">Start Time</label>
+              <input type="time" id="new-contest-start-time" class="form-input" required value="10:00"/>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+            <div class="form-group">
+              <label class="form-label" for="new-contest-end-date">End Date</label>
+              <input type="date" id="new-contest-end-date" class="form-input" required value="2026-10-15"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-contest-end-time">End Time</label>
+              <input type="time" id="new-contest-end-time" class="form-input" required value="23:59"/>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+            <div class="form-group">
+              <label class="form-label" for="new-contest-release-date">Result Release Date</label>
+              <input type="date" id="new-contest-release-date" class="form-input" value="2026-10-16"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-contest-retention">Result Retention (Days)</label>
+              <input type="number" id="new-contest-retention" class="form-input" min="1" max="90" value="15"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-contest-status">Initial Status Mode</label>
+            <select id="new-contest-status" class="form-select">
+              <option value="auto">Auto (Calculate based on Start/End Dates)</option>
+              <option value="draft">Draft (Hidden from participants)</option>
+              <option value="upcoming">Upcoming</option>
+              <option value="live">Live</option>
+              <option value="completed">Completed</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeCreateContestModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Contest</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer style="text-align:center; padding:20px; color:var(--color-on-surface-variant); font-size:12px; border-top:1px solid var(--color-outline-variant); background:#ffffff; margin-top:40px;">
+    ACI Career Edge Program • Closed Enterprise Contest Platform Demo
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <script>
+    let activeFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      AuthService.requireAuth('admin');
+      renderContests();
+    });
+
+    function setContestFilter(filter) {
+      activeFilter = filter;
+      const tabs = document.querySelectorAll('#admin-contest-filters .filter-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+      const active = Array.from(tabs).find(t => t.textContent.toLowerCase() === filter);
+      if (active) active.classList.add('active');
+      renderContests();
+    }
+
+    function renderContests() {
+      const container = document.getElementById('admin-contests-list');
+      if (!container) return;
+
+      const contests = StorageService.getContests();
+
+      let filtered = contests;
+      if (activeFilter !== 'all') {
+        filtered = contests.filter(c => {
+          const status = (typeof getContestStatus === 'function' ? getContestStatus(c) : c.status).toLowerCase();
+          return status === activeFilter;
+        });
+      }
+
+      const countEl = document.getElementById('contests-count-display');
+      if (countEl) {
+        countEl.textContent = `Showing ${filtered.length} of ${contests.length} contest${contests.length === 1 ? '' : 's'}`;
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="q-card-simple" style="padding:48px; text-align:center; color:var(--color-on-surface-variant);">
+            <span class="material-symbols-outlined" style="font-size:40px; margin-bottom:12px; color:var(--color-outline);">folder_off</span>
+            <h3 class="font-bold text-on-surface" style="font-size:16px; margin:0 0 6px 0;">No Contests Found</h3>
+            <p style="font-size:13px; margin:0 0 16px 0;">There are no contests matching filter "${activeFilter}".</p>
+            <button type="button" class="btn btn-outline btn-sm" onclick="setContestFilter('all')">Show All Contests</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(c => {
+        const status = (typeof getContestStatus === 'function' ? getContestStatus(c) : c.status).toLowerCase();
+        const tasks = StorageService.getTasks(c.id);
+        const taskCount = tasks.length;
+        const participantCount = (c.participantIds && c.participantIds.length) || (c.id === 'contest-001' ? 500 : 0);
+
+        let badgeClass = 'badge-neutral';
+        let badgeLabel = status.toUpperCase();
+        let borderClass = '';
+
+        if (status === 'live') {
+          badgeClass = 'badge-success';
+          badgeLabel = 'LIVE';
+          borderClass = 'card-live';
+        } else if (status === 'upcoming') {
+          badgeClass = 'badge-warning';
+          badgeLabel = 'UPCOMING';
+          borderClass = 'card-upcoming';
+        } else if (status === 'completed') {
+          badgeClass = 'badge-neutral';
+          badgeLabel = 'COMPLETED';
+          borderClass = 'card-completed';
+        } else if (status === 'archived') {
+          badgeClass = 'badge-neutral';
+          badgeLabel = 'ARCHIVED';
+        } else {
+          badgeClass = 'badge-neutral';
+          badgeLabel = 'DRAFT';
+        }
+
+        const startDateDisplay = c.startDate ? new Date(c.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '25 Sep 2026';
+        const endDateDisplay = c.endDate ? new Date(c.endDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '30 Sep 2026';
+
+        return `
+          <div class="contest-card ${borderClass}">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-3" style="margin-bottom:6px;">
+                  <span class="badge ${badgeClass} font-bold" style="font-size:11px; padding:3px 10px; text-transform:uppercase;">
+                    ${badgeLabel}
+                  </span>
+                  <span style="font-size:12px; color:var(--color-on-surface-variant); font-weight:600;">
+                    ${c.id}
+                  </span>
+                </div>
+                <h3 class="font-headline font-bold text-on-surface" style="font-size:1.35rem; margin:0 0 6px 0;">
+                  ${c.name}
+                </h3>
+                <p style="font-size:13px; color:var(--color-on-surface-variant); margin:0; line-height:1.4; max-width:680px;">
+                  ${c.description || 'Enterprise assessment and challenge workspace.'}
+                </p>
+              </div>
+
+              <div>
+                <button type="button" class="btn btn-primary" onclick="manageContest('${c.id}')" style="padding:10px 20px; font-weight:700;">
+                  <span class="material-symbols-outlined" style="font-size:18px;">tune</span>
+                  <span>${status === 'completed' ? 'View Results' : 'Manage Contest'}</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Meta Grid -->
+            <div class="contest-meta-grid">
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Participants</span>
+                <span class="contest-meta-value">${participantCount} Eligible</span>
+              </div>
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Tasks</span>
+                <span class="contest-meta-value">${taskCount} Active</span>
+              </div>
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Starts</span>
+                <span class="contest-meta-value">${startDateDisplay}</span>
+              </div>
+              <div class="contest-meta-item">
+                <span class="contest-meta-label">Ends</span>
+                <span class="contest-meta-value">${endDateDisplay}</span>
+              </div>
+            </div>
+
+            <!-- Footer Details -->
+            <div class="flex items-center justify-between" style="padding-top:4px;">
+              <span style="font-size:12px; color:var(--color-on-surface-variant);">
+                Results retained: ${c.resultRetentionDays || 15} days after contest end
+              </span>
+              <div class="flex items-center gap-2">
+                <button class="btn btn-subtle btn-sm" onclick="manageContest('${c.id}')">Dashboard</button>
+                <a href="tasks.html?contest=${c.id}" class="btn btn-subtle btn-sm" onclick="StorageService.setCurrentContestId('${c.id}')">Tasks</a>
+                <a href="participants.html?contest=${c.id}" class="btn btn-subtle btn-sm" onclick="StorageService.setCurrentContestId('${c.id}')">Roster</a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function manageContest(contestId) {
+      StorageService.setCurrentContestId(contestId);
+      window.location.href = `dashboard.html?contest=${contestId}`;
+    }
+
+    function openCreateContestModal() {
+      document.getElementById('modal-create-contest').classList.add('open');
+    }
+
+    function closeCreateContestModal() {
+      document.getElementById('modal-create-contest').classList.remove('open');
+    }
+
+    function handleCreateContest(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('new-contest-name').value.trim();
+      const desc = document.getElementById('new-contest-desc').value.trim();
+      const startDate = document.getElementById('new-contest-start-date').value;
+      const startTime = document.getElementById('new-contest-start-time').value;
+      const endDate = document.getElementById('new-contest-end-date').value;
+      const endTime = document.getElementById('new-contest-end-time').value;
+      const releaseDate = document.getElementById('new-contest-release-date').value;
+      const retentionDays = Number(document.getElementById('new-contest-retention').value) || 15;
+      const statusMode = document.getElementById('new-contest-status').value;
+
+      const existingContests = StorageService.getContests();
+      const nextNum = String(existingContests.length + 1).padStart(3, '0');
+      const contestId = `contest-${nextNum}`;
+
+      const newContest = {
+        id: contestId,
+        name: name,
+        description: desc,
+        track: "Enterprise Challenge",
+        status: statusMode === 'auto' ? 'live' : statusMode,
+        startDate: startDate,
+        startTime: startTime,
+        endDate: endDate,
+        endTime: endTime,
+        resultReleaseDate: releaseDate,
+        resultRetentionDays: retentionDays,
+        participantIds: ["#027", "#087"], // Assign hero demo participants initially
+        taskIds: [],
+        settings: {
+          contestName: name,
+          taskAccessMode: "all",
+          leaderboardMode: "live",
+          scoringMode: "mixed",
+          proctoring: {
+            requireCamera: true,
+            requireMicrophone: true,
+            requireFullscreen: true,
+            detectTabSwitch: true
+          }
+        }
+      };
+
+      StorageService.saveContest(newContest);
+      closeCreateContestModal();
+      document.getElementById('create-contest-form').reset();
+      UI.showToast(`Contest "${name}" created successfully!`, 'success');
+      renderContests();
+    }
+  </script>
+</body>
+</html>
