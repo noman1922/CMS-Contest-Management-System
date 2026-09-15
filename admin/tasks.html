@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Tasks</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+</head>
+<body class="app-shell">
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Admin Sidebar -->
+  <aside class="app-sidebar">
+    <div class="flex flex-col">
+      <div class="sidebar-header">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" class="sidebar-logo"/>
+      </div>
+      <div class="sidebar-nav-container">
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="contests.html" class="nav-link">
+            <span class="material-symbols-outlined">folder_open</span>
+            <span>Contests</span>
+          </a>
+          <a href="participants.html" class="nav-link">
+            <span class="material-symbols-outlined">group</span>
+            <span>Participants</span>
+          </a>
+          <a href="tasks.html" class="nav-link active">
+            <span class="material-symbols-outlined">assignment</span>
+            <span>Tasks</span>
+          </a>
+          <a href="submissions.html" class="nav-link">
+            <span class="material-symbols-outlined">rate_review</span>
+            <span>Submissions</span>
+          </a>
+          <a href="leaderboard.html" class="nav-link">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span>Leaderboard</span>
+          </a>
+          <a href="monitoring.html" class="nav-link">
+            <span class="material-symbols-outlined">videocam</span>
+            <span>Monitoring</span>
+          </a>
+          <a href="results.html" class="nav-link">
+            <span class="material-symbols-outlined">military_tech</span>
+            <span>Results</span>
+          </a>
+          <a href="settings.html" class="nav-link">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-outline btn-sm w-full" style="width:100%; justify-content:center;" onclick="AuthService.switchRole('participant')">
+          <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          <span>Switch to Participant</span>
+        </button>
+        <button type="button" class="btn btn-logout w-full" style="width:100%; justify-content:center;" onclick="AuthService.logout()">
+          <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Admin Header with Contest Switcher -->
+  <header class="app-header">
+    <div class="header-left">
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="flex items-center gap-3">
+        <!-- Contest Switcher -->
+        <div class="contest-switcher-container">
+          <button type="button" class="contest-switcher-btn" id="contest-switcher-btn">
+            <span class="badge badge-success" style="font-size:10px; padding:2px 6px;" id="header-contest-badge">LIVE</span>
+            <span id="header-contest-name">Business Challenge 2026</span>
+            <span class="material-symbols-outlined" style="font-size:16px;">expand_more</span>
+          </button>
+          <div class="contest-dropdown-menu" id="contest-switcher-dropdown"></div>
+        </div>
+
+        <span class="demo-mode-pill">DEMO MODE · Admin</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- One-Click Role Switch -->
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('participant')" title="Switch to Participant Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Participant</span>
+      </button>
+
+      <!-- User Profile Badge -->
+      <div class="user-profile-badge">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" class="avatar" alt="Dr. Vance"/>
+        <div style="display:flex; flex-direction:column; text-align:left;">
+          <span style="font-weight:600; font-size:12px; line-height:1.2;">Dr. Alistair Vance</span>
+          <span style="font-size:11px; color:var(--color-on-surface-variant); line-height:1.2;">Assessment Director</span>
+        </div>
+      </div>
+
+      <!-- Logout Button -->
+      <button type="button" class="btn-logout" onclick="AuthService.logout()" title="Logout">
+        <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <div class="content-container flex flex-col gap-5" style="max-width:960px; padding:28px 20px 80px;">
+
+      <!-- Header Row -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <h1 class="font-headline font-bold text-on-surface" style="font-size:1.45rem; margin:0;">
+            Tasks
+          </h1>
+          <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:2px;">
+            Create and manage contest tasks and questions.
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <button type="button" class="btn btn-primary" onclick="openTaskBuilderNew()">
+            <span class="material-symbols-outlined" style="font-size:18px;">add</span>
+            <span>+ Create Task</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tasks List Table -->
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">Task</th>
+                <th>Title</th>
+                <th>Questions</th>
+                <th>Points</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th style="text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-tasks-body">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Simplified Task Builder Modal (Google Forms simplicity) -->
+  <div class="modal-overlay" id="task-builder-modal">
+    <div class="modal-dialog" style="max-width: 860px; max-height: 92vh;">
+      <div class="modal-header">
+        <div>
+          <h3 class="font-headline font-bold text-on-surface" style="margin:0; font-size:1.25rem;" id="builder-modal-heading">
+            Create Task
+          </h3>
+          <span style="font-size:12px; color:var(--color-on-surface-variant);">Configure task settings and add questions</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="badge badge-primary font-bold" id="builder-total-points">100 Points</span>
+          <button class="btn-icon" onclick="UI.closeModal('task-builder-modal')">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body flex flex-col gap-5" style="background:#f8fafc; padding:24px; overflow-y:auto;">
+        
+        <!-- Task Details Section -->
+        <div class="q-card-simple" style="margin-bottom:0; padding:20px;">
+          <h4 class="font-headline font-bold text-on-surface mb-3" style="font-size:14px; text-transform:uppercase; letter-spacing:0.04em;">
+            Task Details
+          </h4>
+          <div class="flex flex-col gap-3">
+            <div class="form-group" style="margin:0;">
+              <label class="form-label">Task Name</label>
+              <input type="text" class="form-input" id="task-builder-title" value="Integrated Business Challenge"/>
+            </div>
+            <div class="form-group" style="margin:0;">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea" id="task-builder-desc" rows="2">Comprehensive strategic assessment challenge synthesizing multiple business areas.</textarea>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="form-group" style="margin:0;">
+                <label class="form-label">Deadline</label>
+                <input type="text" class="form-input" id="task-builder-deadline" value="Today, 18:00 UTC"/>
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label class="form-label">Time Limit (Minutes)</label>
+                <input type="number" class="form-input" id="task-builder-timelimit" value="60"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Questions Section -->
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h4 class="font-headline font-bold text-on-surface" style="font-size:14px; text-transform:uppercase; letter-spacing:0.04em; margin:0;">
+              Questions
+            </h4>
+          </div>
+
+          <!-- Dynamic Questions List -->
+          <div id="builder-questions-container" class="flex flex-col gap-3">
+            <!-- Rendered by tasks.js -->
+          </div>
+
+          <!-- Prominent + Add Question Button -->
+          <div style="margin-top:16px;">
+            <button type="button" class="btn-add-question-large" onclick="openAddQuestionModal()">
+              <span class="material-symbols-outlined" style="font-size:20px;">add_circle</span>
+              <span>+ Add Question</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer" style="justify-content:space-between;">
+        <button type="button" class="btn btn-outline" onclick="UI.closeModal('task-builder-modal')">
+          Cancel
+        </button>
+        <div class="flex gap-2">
+          <button type="button" class="btn btn-outline" onclick="TaskBuilderModule.saveTask(false); UI.closeModal('task-builder-modal'); renderAdminTasksTable();">
+            Save Draft
+          </button>
+          <button type="button" class="btn btn-primary" onclick="TaskBuilderModule.saveTask(true); UI.closeModal('task-builder-modal'); renderAdminTasksTable();">
+            Publish Task
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple Add Question Type Picker Modal -->
+  <div class="modal-overlay" id="add-question-picker-modal">
+    <div class="modal-dialog" style="max-width: 420px;">
+      <div class="modal-header">
+        <h3 class="font-headline font-bold text-on-surface" style="margin:0; font-size:1.15rem;">
+          Add Question
+        </h3>
+        <button class="btn-icon" onclick="UI.closeModal('add-question-picker-modal')">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body flex flex-col gap-2" style="padding:16px;">
+        <div class="mcq-option-row" onclick="selectQuestionTypeAndAdd('mcq')">
+          <div class="mcq-radio-circle"></div>
+          <div class="mcq-option-text">
+            <strong>MCQ</strong>
+            <p style="font-size:12px; color:var(--color-on-surface-variant); margin:2px 0 0 0;">Multiple choice with single correct answer</p>
+          </div>
+        </div>
+
+        <div class="mcq-option-row" onclick="selectQuestionTypeAndAdd('written')">
+          <div class="mcq-radio-circle"></div>
+          <div class="mcq-option-text">
+            <strong>Written Answer</strong>
+            <p style="font-size:12px; color:var(--color-on-surface-variant); margin:2px 0 0 0;">Open-ended text response with character limit</p>
+          </div>
+        </div>
+
+        <div class="mcq-option-row" onclick="selectQuestionTypeAndAdd('admin_pdf')">
+          <div class="mcq-radio-circle"></div>
+          <div class="mcq-option-text">
+            <strong>Reference PDF + Answer</strong>
+            <p style="font-size:12px; color:var(--color-on-surface-variant); margin:2px 0 0 0;">Attached reference document with text question</p>
+          </div>
+        </div>
+
+        <div class="mcq-option-row" onclick="selectQuestionTypeAndAdd('upload_pdf')">
+          <div class="mcq-radio-circle"></div>
+          <div class="mcq-option-text">
+            <strong>Participant PDF Upload</strong>
+            <p style="font-size:12px; color:var(--color-on-surface-variant); margin:2px 0 0 0;">Deliverable upload in PDF format</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/scoring.js"></script>
+  <script src="../js/pdf.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/tasks.js"></script>
+
+  <script>
+    function openTaskBuilderNew() {
+      TaskBuilderModule.initNewTask();
+      const heading = document.getElementById('builder-modal-heading');
+      if (heading) heading.textContent = 'Create Task';
+      const titleInp = document.getElementById('task-builder-title');
+      if (titleInp) titleInp.value = TaskBuilderModule.currentTask.title;
+      UI.openModal('task-builder-modal');
+    }
+
+    function openTaskBuilderEdit(taskId) {
+      if (TaskBuilderModule.loadTask(taskId)) {
+        const heading = document.getElementById('builder-modal-heading');
+        if (heading) heading.textContent = 'Edit Task';
+        const titleInp = document.getElementById('task-builder-title');
+        const descInp = document.getElementById('task-builder-desc');
+        const deadlineInp = document.getElementById('task-builder-deadline');
+        const timelimitInp = document.getElementById('task-builder-timelimit');
+
+        if (titleInp) titleInp.value = TaskBuilderModule.currentTask.title;
+        if (descInp) descInp.value = TaskBuilderModule.currentTask.description;
+        if (deadlineInp) deadlineInp.value = TaskBuilderModule.currentTask.deadline;
+        if (timelimitInp) timelimitInp.value = TaskBuilderModule.currentTask.timeLimitMinutes;
+
+        UI.openModal('task-builder-modal');
+      }
+    }
+
+    function openAddQuestionModal() {
+      UI.openModal('add-question-picker-modal');
+    }
+
+    function selectQuestionTypeAndAdd(type) {
+      UI.closeModal('add-question-picker-modal');
+      TaskBuilderModule.addQuestion(type);
+      UI.showToast(`Added ${type.toUpperCase()} question`, 'success');
+      // Scroll to bottom of questions container
+      const container = document.getElementById('builder-questions-container');
+      if (container) {
+        container.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function renderAdminTasksTable() {
+      const tbody = document.getElementById('admin-tasks-body');
+      if (!tbody) return;
+
+      const currentCid = StorageService.getCurrentContestId() || 'contest-001';
+      const contest = StorageService.getContest(currentCid);
+
+      const titleEl = document.getElementById('admin-tasks-page-title');
+      const subtitleEl = document.getElementById('admin-tasks-page-subtitle');
+      if (titleEl && contest) {
+        titleEl.textContent = `${contest.name} — Tasks`;
+      }
+      if (subtitleEl && contest) {
+        subtitleEl.textContent = `Manage tasks and questions specific to ${contest.name}.`;
+      }
+
+      const tasks = StorageService.getTasks(currentCid);
+      if (tasks.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align:center; padding:40px; color:var(--color-on-surface-variant);">
+              <span class="material-symbols-outlined" style="font-size:36px; opacity:0.5; margin-bottom:8px; display:block;">assignment_late</span>
+              No tasks created for this contest yet.<br/>
+              Click <strong>+ Create Task</strong> above to build the first challenge.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = tasks.map(t => {
+        return `
+          <tr>
+            <td>
+              <span class="font-bold text-primary" style="font-size:14px;">Task ${t.taskNumber}</span>
+            </td>
+            <td>
+              <span class="font-bold text-on-surface" style="font-size:14px;">${t.title}</span>
+            </td>
+            <td>
+              <span style="font-size:13px; color:var(--color-on-surface-variant);">${t.questions ? t.questions.length : 0} Questions</span>
+            </td>
+            <td>
+              <span class="font-bold text-on-surface tabular-nums">${t.points} pts</span>
+            </td>
+            <td>
+              <span class="badge ${t.status === 'published' ? 'badge-success' : 'badge-neutral'} font-semibold">
+                ${t.status === 'published' ? 'Published' : 'Draft'}
+              </span>
+            </td>
+            <td style="font-size:13px; color:var(--color-on-surface-variant);">
+              ${t.deadline || 'Today, 18:00 UTC'}
+            </td>
+            <td style="text-align:right;">
+              <div class="flex items-center justify-end gap-1">
+                <button type="button" class="btn btn-outline btn-sm" onclick="openTaskBuilderEdit('${t.id}')">
+                  Edit
+                </button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="TaskBuilderModule.duplicateTask('${t.id}'); renderAdminTasksTable();">
+                  Duplicate
+                </button>
+                <button type="button" class="btn btn-icon text-error" onclick="if(confirm('Delete task?')) { TaskBuilderModule.deleteTask('${t.id}'); renderAdminTasksTable(); }">
+                  <span class="material-symbols-outlined" style="font-size:18px;">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      AuthService.requireAuth('admin');
+      renderAdminTasksTable();
+    });
+  </script>
+</body>
+</html>
