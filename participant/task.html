@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Task Assessment</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+</head>
+<body class="app-shell">
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Simplified Participant Sidebar -->
+  <aside class="app-sidebar">
+    <div class="flex flex-col">
+      <div class="sidebar-header">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" class="sidebar-logo"/>
+      </div>
+      <div style="padding:0 16px 12px;">
+        <a href="contests.html" class="btn-back-contests w-full" style="width:100%; justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+      </div>
+      <div class="sidebar-nav-container">
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="tasks.html" class="nav-link active">
+            <span class="material-symbols-outlined">assignment</span>
+            <span>Tasks</span>
+          </a>
+          <a href="leaderboard.html" class="nav-link">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span>Leaderboard</span>
+          </a>
+          <a href="progress.html" class="nav-link">
+            <span class="material-symbols-outlined">insights</span>
+            <span>My Progress</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-outline btn-sm w-full" style="width:100%; justify-content:center;" onclick="AuthService.switchRole('admin')">
+          <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          <span>Switch to Admin</span>
+        </button>
+        <button type="button" class="btn btn-logout w-full" style="width:100%; justify-content:center;" onclick="AuthService.logout()">
+          <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Clean Global Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="flex items-center gap-3">
+        <a href="contests.html" class="btn-back-contests">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+        <span style="color:var(--color-outline); font-size:16px;">/</span>
+        <span class="font-headline font-bold text-on-surface" style="font-size:1.05rem;" id="header-contest-title">Business Challenge 2026</span>
+        <span class="demo-mode-pill">DEMO MODE · Participant</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- One-Click Role Switch -->
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('admin')" title="Switch to Admin Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Admin</span>
+      </button>
+
+      <!-- Profile Menu Dropdown -->
+      <div class="profile-menu-container">
+        <button type="button" class="profile-trigger-btn" id="participant-profile-btn">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="avatar-sm"/>
+          <span style="font-size:12px; font-weight:600; color:var(--color-on-surface);">Elena Rostova</span>
+          <span class="material-symbols-outlined" style="font-size:16px; color:var(--color-on-surface-variant);">expand_more</span>
+        </button>
+
+        <div class="profile-dropdown-menu" id="participant-profile-dropdown">
+          <div style="padding:10px 12px; border-bottom:1px solid var(--color-surface-container-high);">
+            <div style="font-size:13px; font-weight:700; color:var(--color-on-surface);">Elena Rostova</div>
+            <div style="font-size:11px; color:var(--color-on-surface-variant);">Participant #027</div>
+          </div>
+          <a href="profile.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">person</span>
+              <span>View Profile</span>
+            </span>
+          </a>
+          <a href="contests.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">trophy</span>
+              <span>My Contests</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.switchRole('admin')" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">admin_panel_settings</span>
+              <span>Switch to Admin Demo</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.logout()" class="contest-dropdown-item" style="color:var(--color-error);">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+              <span>Logout</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="app-main">
+    
+    <!-- Clean Sub-Header -->
+    <div style="background:#ffffff; border-bottom:1px solid var(--color-outline-variant); padding:16px 32px;">
+      <div style="max-width:860px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div>
+          <nav style="font-size:12px; color:var(--color-on-surface-variant); margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+            <a href="contests.html" style="color:var(--color-on-surface-variant); text-decoration:none;">My Contests</a>
+            <span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span>
+            <a href="dashboard.html" style="color:var(--color-on-surface-variant); text-decoration:none;" class="sidebar-contest-name">Business Challenge 2026</a>
+            <span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span>
+            <a href="tasks.html" style="color:var(--color-primary); text-decoration:none;">Tasks</a>
+            <span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span>
+            <span id="task-breadcrumb-title">Task 05</span>
+          </nav>
+          <div class="flex items-center gap-2">
+            <h1 class="font-headline font-bold text-on-surface" style="font-size:1.3rem; margin:0;" id="task-page-title">
+              Task 05: Business Challenge
+            </h1>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="badge badge-primary font-bold" id="task-total-points">100 Points</span>
+          <span class="badge badge-success font-semibold flex items-center gap-1" id="monitoring-active-badge" style="display:inline-flex;">
+            <span class="pulse-dot" style="width:6px; height:6px; background:#10b981;"></span>
+            Monitoring Active
+          </span>
+          <span style="font-size:12px; color:var(--color-on-surface-variant);" id="countdown-timer">04h 30m</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Question Form Stepper -->
+    <div class="content-container" style="max-width:860px; padding:24px 20px 80px;">
+
+      <!-- Question Navigation Bar -->
+      <div class="question-nav-container">
+        <div class="question-nav-header">
+          <span class="font-headline font-bold text-on-surface" id="q-nav-counter-label" style="font-size:14px;">
+            Question 1 of 6
+          </span>
+          <div class="flex items-center gap-3" style="font-size:11px; color:var(--color-on-surface-variant);">
+            <span class="flex items-center gap-1">
+              <span style="width:8px; height:8px; border-radius:50%; background:var(--color-primary-container);"></span>
+              Current
+            </span>
+            <span class="flex items-center gap-1">
+              <span style="width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+              Answered
+            </span>
+            <span class="flex items-center gap-1">
+              <span style="width:8px; height:8px; border-radius:50%; background:#e2e8f0; border:1px solid #cbd5e1;"></span>
+              Not answered
+            </span>
+          </div>
+        </div>
+        <div class="question-pills-row" id="q-pills-row">
+          <!-- Rendered dynamically: [1] [2] [3] [4] [5] [6] -->
+        </div>
+      </div>
+
+      <!-- Current Question Card (Google Forms Style) -->
+      <div id="active-question-container">
+        <!-- Rendered dynamically by participant.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Proctoring Permission Modal -->
+  <div class="modal-overlay" id="proctoring-permission-modal">
+    <div class="modal-dialog" style="max-width: 480px; text-align:center;">
+      <div class="modal-body" style="padding:28px 24px;">
+        <div style="width:54px; height:54px; border-radius:50%; background:#eff6ff; color:var(--color-primary); display:inline-flex; align-items:center; justify-content:center; margin-bottom:14px;">
+          <span class="material-symbols-outlined" style="font-size:28px;">videocam</span>
+        </div>
+        <h3 class="font-headline font-bold text-primary" style="font-size:1.25rem; margin-bottom:8px;">
+          Monitoring Permissions
+        </h3>
+        <p style="font-size:13px; color:var(--color-on-surface-variant); line-height:1.5; margin-bottom:18px;">
+          This task requires camera, microphone, and fullscreen verification. Feeds are processed securely in your browser session.
+        </p>
+
+        <div class="p-3 rounded-lg bg-surface-container-low text-left mb-4 flex flex-col gap-2" style="font-size:12px;">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-tertiary-container" style="font-size:16px;">check_circle</span>
+            <span>Camera & Microphone enabled</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-tertiary-container" style="font-size:16px;">check_circle</span>
+            <span>Fullscreen mode active</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-tertiary-container" style="font-size:16px;">check_circle</span>
+            <span>Tab switch detection active</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-lg w-full" style="width:100%; justify-content:center;" onclick="ParticipantModule.grantPermissionsAndStart()">
+          <span class="material-symbols-outlined">check</span>
+          <span>Enable & Continue</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submission Confirmation Modal -->
+  <div class="modal-overlay" id="submission-confirmation-modal">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 class="font-headline font-bold text-on-surface" style="margin:0; font-size:1.15rem;">
+          Are you ready to submit?
+        </h3>
+        <button class="btn-icon" onclick="UI.closeModal('submission-confirmation-modal')">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body flex flex-col gap-3">
+        <p style="font-size:14px; color:var(--color-on-surface); line-height:1.5;">
+          You have answered: <strong id="modal-answered-count">6 / 6 questions</strong>
+        </p>
+        <p style="font-size:13px; color:var(--color-on-surface-variant); line-height:1.5;">
+          After submission, some answers cannot be changed.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="UI.closeModal('submission-confirmation-modal')">
+          Go Back
+        </button>
+        <button type="button" class="btn btn-primary" onclick="ParticipantModule.confirmSubmitTask()">
+          Submit Task
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/scoring.js"></script>
+  <script src="../js/pdf.js"></script>
+  <script src="../js/monitoring.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/participant.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      ParticipantModule.initTaskAnswering();
+      UI.initCountdown('countdown-timer', 16362);
+    });
+  </script>
+</body>
+</html>
