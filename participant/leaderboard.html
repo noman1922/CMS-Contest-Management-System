@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Live Leaderboard</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+</head>
+<body class="app-shell">
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Simplified Participant Sidebar -->
+  <aside class="app-sidebar">
+    <div class="flex flex-col">
+      <div class="sidebar-header">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" class="sidebar-logo"/>
+      </div>
+      <div style="padding:0 16px 12px;">
+        <a href="contests.html" class="btn-back-contests w-full" style="width:100%; justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+      </div>
+      <div class="sidebar-nav-container">
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="tasks.html" class="nav-link">
+            <span class="material-symbols-outlined">assignment</span>
+            <span>Tasks</span>
+          </a>
+          <a href="leaderboard.html" class="nav-link active">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span>Leaderboard</span>
+          </a>
+          <a href="progress.html" class="nav-link">
+            <span class="material-symbols-outlined">insights</span>
+            <span>My Progress</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-outline btn-sm w-full" style="width:100%; justify-content:center;" onclick="AuthService.switchRole('admin')">
+          <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          <span>Switch to Admin</span>
+        </button>
+        <button type="button" class="btn btn-logout w-full" style="width:100%; justify-content:center;" onclick="AuthService.logout()">
+          <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Clean Top Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="flex items-center gap-3">
+        <a href="contests.html" class="btn-back-contests">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+        <span style="color:var(--color-outline); font-size:16px;">/</span>
+        <span class="font-headline font-bold text-on-surface" style="font-size:1.05rem;" id="header-contest-title">Business Challenge 2026</span>
+        <span class="demo-mode-pill">DEMO MODE · Participant</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- One-Click Role Switch -->
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('admin')" title="Switch to Admin Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Admin</span>
+      </button>
+
+      <!-- Profile Menu Dropdown -->
+      <div class="profile-menu-container">
+        <button type="button" class="profile-trigger-btn" id="participant-profile-btn">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="avatar-sm" style="width:36px; height:36px; border-radius:50%; object-fit:cover; display:block;"/>
+          <span style="font-size:12px; font-weight:600; color:var(--color-on-surface);">Elena Rostova</span>
+          <span class="material-symbols-outlined" style="font-size:16px; color:var(--color-on-surface-variant);">expand_more</span>
+        </button>
+
+        <div class="profile-dropdown-menu" id="participant-profile-dropdown">
+          <div style="padding:10px 12px; border-bottom:1px solid var(--color-surface-container-high);">
+            <div style="font-size:13px; font-weight:700; color:var(--color-on-surface);">Elena Rostova</div>
+            <div style="font-size:11px; color:var(--color-on-surface-variant);">Participant #027</div>
+          </div>
+          <a href="profile.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">person</span>
+              <span>View Profile</span>
+            </span>
+          </a>
+          <a href="contests.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">trophy</span>
+              <span>My Contests</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.switchRole('admin')" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">admin_panel_settings</span>
+              <span>Switch to Admin Demo</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.logout()" class="contest-dropdown-item" style="color:var(--color-error);">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+              <span>Logout</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="app-main">
+    <div class="content-container flex flex-col gap-6" style="max-width:860px; padding:28px 20px 80px;">
+
+      <!-- Header Title & Refresh -->
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="font-headline font-bold text-on-surface" style="font-size:1.45rem; margin:0;">
+            Live Leaderboard
+          </h1>
+          <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:2px;">
+            Updated <span id="sync-time">just now</span>
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button type="button" class="btn btn-outline btn-sm" onclick="LeaderboardModule.renderTable(); UI.showToast('Leaderboard refreshed.', 'info');">
+            <span class="material-symbols-outlined" style="font-size:16px;">refresh</span>
+            <span>Refresh</span>
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="LeaderboardModule.exportCSV()">
+            <span class="material-symbols-outlined" style="font-size:16px;">download</span>
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Above Table: Your Rank and Score -->
+      <div class="q-card-simple" style="padding:22px 28px; margin-bottom:0;">
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:48px;">
+          <div style="min-width:110px;">
+            <span style="font-size:12px; font-weight:500; color:var(--color-on-surface-variant); display:block; margin-bottom:4px;">Your Rank</span>
+            <span class="font-headline font-bold text-primary" style="font-size:2rem; line-height:1.1;" id="spotlight-rank">#27</span>
+          </div>
+          <div style="border-left:1px solid var(--color-outline-variant); height:38px;"></div>
+          <div style="min-width:140px;">
+            <span style="font-size:12px; font-weight:500; color:var(--color-on-surface-variant); display:block; margin-bottom:4px;">Your Score</span>
+            <span class="font-headline font-bold text-on-surface" style="font-size:2rem; line-height:1.1;" id="spotlight-score">640</span>
+            <span style="font-size:12px; color:var(--color-on-surface-variant);"> points</span>
+          </div>
+          <div style="border-left:1px solid var(--color-outline-variant); height:38px;"></div>
+          <div style="min-width:110px;">
+            <span style="font-size:12px; font-weight:500; color:var(--color-on-surface-variant); display:block; margin-bottom:4px;">Tasks</span>
+            <span class="font-headline font-bold text-on-surface" style="font-size:1.8rem; line-height:1.1;" id="spotlight-tasks">8/10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simple Leaderboard Table -->
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">Rank</th>
+                <th>Participant</th>
+                <th>Score</th>
+                <th style="text-align:right;">Tasks</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+              <!-- Rendered by leaderboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/scoring.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/leaderboard.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = AuthService.requireAuth('participant', true);
+      if (!user) return;
+      const currentCid = StorageService.getCurrentContestId() || 'contest-001';
+      const contest = StorageService.getContest(currentCid);
+      const titleEl = document.getElementById('header-contest-title');
+      if (titleEl && contest) titleEl.textContent = contest.name;
+
+      const p = StorageService.getParticipant(user.participantId) || user;
+
+      const rankEl = document.getElementById('spotlight-rank');
+      if (rankEl) rankEl.textContent = `#${p.rank || 27}`;
+
+      const scoreEl = document.getElementById('spotlight-score');
+      if (scoreEl) scoreEl.textContent = `${p.score || 640}`;
+
+      const tasksEl = document.getElementById('spotlight-tasks');
+      if (tasksEl) tasksEl.textContent = `${p.tasksCompleted || 7}/10`;
+
+      LeaderboardModule.renderTable('leaderboard-body', p.participantId, currentCid);
+    });
+  </script>
+</body>
+</html>

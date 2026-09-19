@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Leaderboard</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+</head>
+<body class="app-shell">
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Admin Sidebar -->
+  <aside class="app-sidebar">
+    <div class="flex flex-col">
+      <div class="sidebar-header">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" class="sidebar-logo"/>
+      </div>
+      <div class="sidebar-nav-container">
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="contests.html" class="nav-link">
+            <span class="material-symbols-outlined">folder_open</span>
+            <span>Contests</span>
+          </a>
+          <a href="participants.html" class="nav-link">
+            <span class="material-symbols-outlined">group</span>
+            <span>Participants</span>
+          </a>
+          <a href="tasks.html" class="nav-link">
+            <span class="material-symbols-outlined">assignment</span>
+            <span>Tasks</span>
+          </a>
+          <a href="submissions.html" class="nav-link">
+            <span class="material-symbols-outlined">rate_review</span>
+            <span>Submissions</span>
+          </a>
+          <a href="leaderboard.html" class="nav-link active">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span>Leaderboard</span>
+          </a>
+          <a href="monitoring.html" class="nav-link">
+            <span class="material-symbols-outlined">videocam</span>
+            <span>Monitoring</span>
+          </a>
+          <a href="results.html" class="nav-link">
+            <span class="material-symbols-outlined">military_tech</span>
+            <span>Results</span>
+          </a>
+          <a href="settings.html" class="nav-link">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-outline btn-sm w-full" style="width:100%; justify-content:center;" onclick="AuthService.switchRole('participant')">
+          <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          <span>Switch to Participant</span>
+        </button>
+        <button type="button" class="btn btn-logout w-full" style="width:100%; justify-content:center;" onclick="AuthService.logout()">
+          <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Admin Header with Contest Switcher -->
+  <header class="app-header">
+    <div class="header-left">
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="flex items-center gap-3">
+        <!-- Contest Switcher -->
+        <div class="contest-switcher-container">
+          <button type="button" class="contest-switcher-btn" id="contest-switcher-btn">
+            <span class="badge badge-success" style="font-size:10px; padding:2px 6px;" id="header-contest-badge">LIVE</span>
+            <span id="header-contest-name">Business Challenge 2026</span>
+            <span class="material-symbols-outlined" style="font-size:16px;">expand_more</span>
+          </button>
+          <div class="contest-dropdown-menu" id="contest-switcher-dropdown"></div>
+        </div>
+
+        <span class="demo-mode-pill">DEMO MODE · Admin</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- One-Click Role Switch -->
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('participant')" title="Switch to Participant Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Participant</span>
+      </button>
+
+      <!-- User Profile Badge -->
+      <div class="user-profile-badge">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" class="avatar" alt="Dr. Vance"/>
+        <div style="display:flex; flex-direction:column; text-align:left;">
+          <span style="font-weight:600; font-size:12px; line-height:1.2;">Dr. Alistair Vance</span>
+          <span style="font-size:11px; color:var(--color-on-surface-variant); line-height:1.2;">Assessment Director</span>
+        </div>
+      </div>
+
+      <!-- Logout Button -->
+      <button type="button" class="btn-logout" onclick="AuthService.logout()" title="Logout">
+        <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <div class="content-container flex flex-col gap-5" style="max-width:960px; padding:28px 20px 80px;">
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <div class="breadcrumb" style="margin-bottom:4px; font-size:12px; color:var(--color-on-surface-variant);">
+            <a href="contests.html" style="color:var(--color-primary); text-decoration:none;">Contests</a> &gt; 
+            <span id="breadcrumb-contest-name">Business Challenge 2026</span> &gt; 
+            <span style="color:var(--color-on-surface); font-weight:600;">Leaderboard</span>
+          </div>
+          <h1 class="font-headline font-bold text-on-surface" style="font-size:1.45rem; margin:0;" id="page-contest-title">
+            Live Leaderboard
+          </h1>
+          <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:2px;">
+            Real-time participant scores and standings for this contest.
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <button type="button" class="btn btn-outline btn-sm" onclick="renderLeaderboard(); UI.showToast('Leaderboard refreshed.', 'info');">
+            <span class="material-symbols-outlined" style="font-size:16px;">refresh</span>
+            <span>Refresh</span>
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="LeaderboardModule.exportCSV()">
+            <span class="material-symbols-outlined" style="font-size:16px;">download</span>
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="card card-sm flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
+        <div class="search-box" style="flex:1;">
+          <span class="material-symbols-outlined">search</span>
+          <input type="text" class="form-input" id="admin-lb-search" placeholder="Search participant..." oninput="LeaderboardModule.searchQuery = this.value; renderLeaderboard();"/>
+        </div>
+
+        <div class="filter-group">
+          <button type="button" class="filter-btn active" onclick="setAdminLbFilter('all', this)">All</button>
+          <button type="button" class="filter-btn" onclick="setAdminLbFilter('top50', this)">Top 50</button>
+        </div>
+      </div>
+
+      <!-- Simple Leaderboard Table -->
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:70px;">Rank</th>
+                <th>Participant</th>
+                <th>Score</th>
+                <th style="text-align:right;">Tasks</th>
+              </tr>
+            </thead>
+            <tbody id="admin-leaderboard-body">
+              <!-- Rendered dynamically by leaderboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/scoring.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/leaderboard.js"></script>
+
+  <script>
+    function renderLeaderboard() {
+      const cid = StorageService.getCurrentContestId() || 'contest-001';
+      const contest = StorageService.getContest(cid);
+      if (contest) {
+        const titleEl = document.getElementById('page-contest-title');
+        const breadcrumbEl = document.getElementById('breadcrumb-contest-name');
+        if (titleEl) titleEl.textContent = `${contest.name} — Leaderboard`;
+        if (breadcrumbEl) breadcrumbEl.textContent = contest.name;
+      }
+      LeaderboardModule.renderTable('admin-leaderboard-body', null, cid);
+    }
+
+    function setAdminLbFilter(filter, btn) {
+      document.querySelectorAll('.filter-group .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      LeaderboardModule.currentFilter = filter;
+      renderLeaderboard();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      AuthService.requireAuth('admin');
+      renderLeaderboard();
+    });
+  </script>
+</body>
+</html>
