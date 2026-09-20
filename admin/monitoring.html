@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Monitoring</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+</head>
+<body class="app-shell">
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Admin Sidebar -->
+  <aside class="app-sidebar">
+    <div class="flex flex-col">
+      <div class="sidebar-header">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" class="sidebar-logo"/>
+      </div>
+      <div class="sidebar-nav-container">
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="contests.html" class="nav-link">
+            <span class="material-symbols-outlined">folder_open</span>
+            <span>Contests</span>
+          </a>
+          <a href="participants.html" class="nav-link">
+            <span class="material-symbols-outlined">group</span>
+            <span>Participants</span>
+          </a>
+          <a href="tasks.html" class="nav-link">
+            <span class="material-symbols-outlined">assignment</span>
+            <span>Tasks</span>
+          </a>
+          <a href="submissions.html" class="nav-link">
+            <span class="material-symbols-outlined">rate_review</span>
+            <span>Submissions</span>
+          </a>
+          <a href="leaderboard.html" class="nav-link">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span>Leaderboard</span>
+          </a>
+          <a href="monitoring.html" class="nav-link active">
+            <span class="material-symbols-outlined">videocam</span>
+            <span>Monitoring</span>
+          </a>
+          <a href="results.html" class="nav-link">
+            <span class="material-symbols-outlined">military_tech</span>
+            <span>Results</span>
+          </a>
+          <a href="settings.html" class="nav-link">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-outline btn-sm w-full" style="width:100%; justify-content:center;" onclick="AuthService.switchRole('participant')">
+          <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          <span>Switch to Participant</span>
+        </button>
+        <button type="button" class="btn btn-logout w-full" style="width:100%; justify-content:center;" onclick="AuthService.logout()">
+          <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Admin Header with Contest Switcher -->
+  <header class="app-header">
+    <div class="header-left">
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="flex items-center gap-3">
+        <!-- Contest Switcher -->
+        <div class="contest-switcher-container">
+          <button type="button" class="contest-switcher-btn" id="contest-switcher-btn">
+            <span class="badge badge-success" style="font-size:10px; padding:2px 6px;" id="header-contest-badge">LIVE</span>
+            <span id="header-contest-name">Business Challenge 2026</span>
+            <span class="material-symbols-outlined" style="font-size:16px;">expand_more</span>
+          </button>
+          <div class="contest-dropdown-menu" id="contest-switcher-dropdown"></div>
+        </div>
+
+        <span class="demo-mode-pill">DEMO MODE · Admin</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- One-Click Role Switch -->
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('participant')" title="Switch to Participant Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Participant</span>
+      </button>
+
+      <!-- User Profile Badge -->
+      <div class="user-profile-badge">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" class="avatar" alt="Dr. Vance"/>
+        <div style="display:flex; flex-direction:column; text-align:left;">
+          <span style="font-weight:600; font-size:12px; line-height:1.2;">Dr. Alistair Vance</span>
+          <span style="font-size:11px; color:var(--color-on-surface-variant); line-height:1.2;">Assessment Director</span>
+        </div>
+      </div>
+
+      <!-- Logout Button -->
+      <button type="button" class="btn-logout" onclick="AuthService.logout()" title="Logout">
+        <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <div class="content-container flex flex-col gap-5" style="max-width:960px; padding:28px 20px 80px;">
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <div class="breadcrumb" style="margin-bottom:4px; font-size:12px; color:var(--color-on-surface-variant);">
+            <a href="contests.html" style="color:var(--color-primary); text-decoration:none;">Contests</a> &gt; 
+            <span id="breadcrumb-contest-name">Business Challenge 2026</span> &gt; 
+            <span style="color:var(--color-on-surface); font-weight:600;">Monitoring</span>
+          </div>
+          <h1 class="font-headline font-bold text-on-surface" style="font-size:1.45rem; margin:0;" id="page-contest-title">
+            Live Monitoring & Telemetry
+          </h1>
+          <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:2px;">
+            Live session verification and proctoring telemetry for this contest. Click a participant to inspect events.
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <button type="button" class="btn btn-outline btn-sm" onclick="exportMonitoringCsv()">
+            <span class="material-symbols-outlined" style="font-size:16px;">download</span>
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Monitoring Table -->
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Participant</th>
+                <th>Camera</th>
+                <th>Mic</th>
+                <th>Fullscreen</th>
+                <th>Alerts</th>
+                <th>Status</th>
+                <th style="text-align:right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-monitoring-body">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Clean Participant Monitoring Details Modal -->
+  <div class="modal-overlay" id="monitoring-participant-modal">
+    <div class="modal-dialog" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="font-headline font-bold text-on-surface" style="margin:0; font-size:1.2rem;" id="m-modal-title">
+          Participant #027
+        </h3>
+        <button class="btn-icon" onclick="UI.closeModal('monitoring-participant-modal')">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal-body flex flex-col gap-4" style="padding:20px;">
+        <div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-2 font-label-sm" style="font-size:13px;">
+          <div class="flex justify-between">
+            <span style="color:var(--color-on-surface-variant);">Camera:</span>
+            <span class="font-bold text-on-surface" id="m-modal-cam">Connected</span>
+          </div>
+          <div class="flex justify-between">
+            <span style="color:var(--color-on-surface-variant);">Microphone:</span>
+            <span class="font-bold text-on-surface" id="m-modal-mic">Connected</span>
+          </div>
+          <div class="flex justify-between">
+            <span style="color:var(--color-on-surface-variant);">Fullscreen:</span>
+            <span class="font-bold text-on-surface" id="m-modal-full">Active</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-headline font-bold text-on-surface mb-2" style="font-size:13px; text-transform:uppercase;">
+            Monitoring Events
+          </h4>
+          <div id="m-modal-events" class="flex flex-col gap-2">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" onclick="UI.closeModal('monitoring-participant-modal')">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/scoring.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/admin.js"></script>
+
+  <script>
+    function renderMonitoring() {
+      const cid = StorageService.getCurrentContestId() || 'contest-001';
+      const contest = StorageService.getContest(cid);
+      if (contest) {
+        const titleEl = document.getElementById('page-contest-title');
+        const breadcrumbEl = document.getElementById('breadcrumb-contest-name');
+        if (titleEl) titleEl.textContent = `${contest.name} — Monitoring`;
+        if (breadcrumbEl) breadcrumbEl.textContent = contest.name;
+      }
+
+      const tbody = document.getElementById('admin-monitoring-body');
+      if (!tbody) return;
+
+      const eligibleIds = new Set(contest ? contest.participantIds : []);
+      const allActive = [
+        { id: "#027", camera: "ON", mic: "ON", fullscreen: "ON", alerts: 2, status: "Active" },
+        { id: "#087", camera: "ON", mic: "ON", fullscreen: "ON", alerts: 0, status: "Active" },
+        { id: "#112", camera: "ON", mic: "ON", fullscreen: "ON", alerts: 1, status: "Active" },
+        { id: "#044", camera: "OFF", mic: "ON", fullscreen: "ON", alerts: 3, status: "Attention" },
+        { id: "#231", camera: "ON", mic: "ON", fullscreen: "ON", alerts: 0, status: "Active" },
+        { id: "#198", camera: "ON", mic: "ON", fullscreen: "ON", alerts: 0, status: "Active" },
+        { id: "#301", camera: "ON", mic: "ON", fullscreen: "ON", alerts: 0, status: "Active" }
+      ];
+
+      // Filter active candidates to those who belong to this contest
+      const activeCandidates = allActive.filter(c => eligibleIds.size === 0 || eligibleIds.has(c.id));
+
+      if (activeCandidates.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align:center; padding:36px; color:var(--color-on-surface-variant);">
+              <span class="material-symbols-outlined" style="font-size:32px; opacity:0.5; display:block; margin-bottom:6px;">videocam_off</span>
+              No active participants connected to this contest right now.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = activeCandidates.map(c => `
+        <tr style="cursor:pointer;" onclick="AdminModule.openMonitoringParticipantModal('${c.id}')">
+          <td>
+            <span class="font-bold text-primary font-headline" style="font-size:14px;">${c.id}</span>
+          </td>
+          <td>
+            <span class="badge ${c.camera === 'ON' ? 'badge-success' : 'badge-error'} font-semibold">
+              ${c.camera}
+            </span>
+          </td>
+          <td>
+            <span class="badge ${c.mic === 'ON' ? 'badge-success' : 'badge-error'} font-semibold">
+              ${c.mic}
+            </span>
+          </td>
+          <td>
+            <span class="badge ${c.fullscreen === 'ON' ? 'badge-primary' : 'badge-neutral'} font-semibold">
+              ${c.fullscreen}
+            </span>
+          </td>
+          <td>
+            <span class="badge ${c.alerts > 0 ? 'badge-warning' : 'badge-neutral'} font-semibold">
+              ${c.alerts}
+            </span>
+          </td>
+          <td>
+            <span class="badge ${c.status === 'Active' ? 'badge-success' : 'badge-warning'} font-semibold">
+              ${c.status}
+            </span>
+          </td>
+          <td style="text-align:right;">
+            <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); AdminModule.openMonitoringParticipantModal('${c.id}')">
+              View Details
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function exportMonitoringCsv() {
+      const cid = StorageService.getCurrentContestId() || 'contest-001';
+      const contest = StorageService.getContest(cid);
+      const events = StorageService.getMonitoringEvents(cid);
+      const headers = ['Contest', 'Participant ID', 'Timestamp', 'Type', 'Title', 'Details'];
+      const rows = events.map(e => [
+        contest ? contest.name : cid,
+        e.participantId,
+        e.timestamp,
+        e.type,
+        e.title,
+        e.details
+      ]);
+      UI.exportToCsv(`${contest ? contest.id : 'contest'}_monitoring_events.csv`, headers, rows);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      AuthService.requireAuth('admin');
+      renderMonitoring();
+    });
+  </script>
+</body>
+</html>
