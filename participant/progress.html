@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - My Progress</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+</head>
+<body class="app-shell">
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Simplified Participant Sidebar -->
+  <aside class="app-sidebar">
+    <div class="flex flex-col">
+      <div class="sidebar-header">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program Logo" class="sidebar-logo"/>
+      </div>
+      <div style="padding:0 16px 12px;">
+        <a href="contests.html" class="btn-back-contests w-full" style="width:100%; justify-content:center;">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+      </div>
+      <div class="sidebar-nav-container">
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="tasks.html" class="nav-link">
+            <span class="material-symbols-outlined">assignment</span>
+            <span>Tasks</span>
+          </a>
+          <a href="leaderboard.html" class="nav-link">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span>Leaderboard</span>
+          </a>
+          <a href="progress.html" class="nav-link active">
+            <span class="material-symbols-outlined">insights</span>
+            <span>My Progress</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-outline btn-sm w-full" style="width:100%; justify-content:center;" onclick="AuthService.switchRole('admin')">
+          <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+          <span>Switch to Admin</span>
+        </button>
+        <button type="button" class="btn btn-logout w-full" style="width:100%; justify-content:center;" onclick="AuthService.logout()">
+          <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Clean Top Header -->
+  <header class="app-header">
+    <div class="header-left">
+      <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <div class="flex items-center gap-3">
+        <a href="contests.html" class="btn-back-contests">
+          <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+          <span>My Contests</span>
+        </a>
+        <span style="color:var(--color-outline); font-size:16px;">/</span>
+        <span class="font-headline font-bold text-on-surface" style="font-size:1.05rem;" id="header-contest-title">Business Challenge 2026</span>
+        <span class="demo-mode-pill">DEMO MODE · Participant</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <!-- One-Click Role Switch -->
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('admin')" title="Switch to Admin Demo">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Admin</span>
+      </button>
+
+      <!-- Profile Menu Dropdown -->
+      <div class="profile-menu-container">
+        <button type="button" class="profile-trigger-btn" id="participant-profile-btn">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="avatar-sm"/>
+          <span style="font-size:12px; font-weight:600; color:var(--color-on-surface);">Elena Rostova</span>
+          <span class="material-symbols-outlined" style="font-size:16px; color:var(--color-on-surface-variant);">expand_more</span>
+        </button>
+
+        <div class="profile-dropdown-menu" id="participant-profile-dropdown">
+          <div style="padding:10px 12px; border-bottom:1px solid var(--color-surface-container-high);">
+            <div style="font-size:13px; font-weight:700; color:var(--color-on-surface);">Elena Rostova</div>
+            <div style="font-size:11px; color:var(--color-on-surface-variant);">Participant #027</div>
+          </div>
+          <a href="profile.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">person</span>
+              <span>View Profile</span>
+            </span>
+          </a>
+          <a href="contests.html" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">trophy</span>
+              <span>My Contests</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.switchRole('admin')" class="contest-dropdown-item">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">admin_panel_settings</span>
+              <span>Switch to Admin Demo</span>
+            </span>
+          </a>
+          <div class="contest-dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="AuthService.logout()" class="contest-dropdown-item" style="color:var(--color-error);">
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+              <span>Logout</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <div class="content-container flex flex-col gap-6" style="max-width:860px; padding:28px 20px 80px;">
+
+      <div>
+        <h1 class="font-headline font-bold text-on-surface" style="font-size:1.45rem; margin:0;">
+          My Progress
+        </h1>
+        <p style="font-size:13px; color:var(--color-on-surface-variant); margin-top:2px;">
+          Completed tasks, verified scores, and feedback.
+        </p>
+      </div>
+
+      <!-- Score Summary -->
+      <div class="q-card-simple" style="padding:20px 24px;">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div class="flex items-center gap-6">
+            <div>
+              <span style="font-size:12px; color:var(--color-on-surface-variant); display:block;">Current Rank</span>
+              <span class="font-headline font-bold text-primary" style="font-size:1.8rem; line-height:1.1;" id="progress-rank">#27</span>
+            </div>
+            <div style="border-left:1px solid var(--color-outline-variant); height:32px;"></div>
+            <div>
+              <span style="font-size:12px; color:var(--color-on-surface-variant); display:block;">Total Score</span>
+              <span class="font-headline font-bold text-on-surface" style="font-size:1.8rem; line-height:1.1;" id="progress-score">640</span>
+              <span style="font-size:12px; color:var(--color-on-surface-variant);" id="progress-max-score"> / 1,000 pts</span>
+            </div>
+            <div style="border-left:1px solid var(--color-outline-variant); height:32px;"></div>
+            <div>
+              <span style="font-size:12px; color:var(--color-on-surface-variant); display:block;">Tasks Completed</span>
+              <span class="font-headline font-bold text-on-surface" style="font-size:1.8rem; line-height:1.1;" id="progress-completed-tasks">7</span>
+              <span style="font-size:12px; color:var(--color-on-surface-variant);" id="progress-total-tasks"> / 10</span>
+            </div>
+          </div>
+          <a href="tasks.html" class="btn btn-primary btn-sm">
+            <span>Continue Next Task</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Task Evaluation History Table -->
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Feedback</th>
+              </tr>
+            </thead>
+            <tbody id="progress-table-body">
+              <!-- Dynamic -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/scoring.js"></script>
+  <script src="../js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AuthService.requireAuth('participant');
+      const cid = StorageService.getCurrentContestId() || 'contest-001';
+      const user = StorageService.getUser('participant-027');
+      const tasks = StorageService.getTasks(cid);
+      const states = StorageService.getParticipantTaskStates('#027', cid);
+
+      const totalPoints = tasks.reduce((sum, t) => sum + (t.points || 0), 0);
+      const completedCount = tasks.filter(t => states[t.id] && states[t.id].status === 'completed').length;
+
+      document.getElementById('progress-rank').textContent = user ? `#${user.rank || 27}` : '#27';
+      document.getElementById('progress-score').textContent = user ? user.score : '640';
+      document.getElementById('progress-max-score').textContent = ` / ${totalPoints || 1000} pts`;
+      document.getElementById('progress-completed-tasks').textContent = completedCount;
+      document.getElementById('progress-total-tasks').textContent = ` / ${tasks.length || 10}`;
+
+      const tbody = document.getElementById('progress-table-body');
+      if (!tbody) return;
+
+      if (tasks.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" style="text-align:center; padding:32px; color:var(--color-on-surface-variant);">
+              No tasks available for this contest yet.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = tasks.map(t => {
+        const state = states[t.id] || { status: 'not_started', score: null };
+        let badgeClass = 'badge-neutral';
+        let statusLabel = 'Not Started';
+        let scoreDisplay = `— / ${t.points}`;
+        let feedback = 'Task not yet attempted.';
+
+        if (state.status === 'completed') {
+          badgeClass = 'badge-success';
+          statusLabel = 'Completed';
+          scoreDisplay = `${state.score || t.points} / ${t.points}`;
+          feedback = 'Accurate responses evaluated.';
+        } else if (state.status === 'submitted') {
+          badgeClass = 'badge-warning';
+          statusLabel = 'Under Review';
+          scoreDisplay = `— / ${t.points}`;
+          feedback = 'Evaluation in progress.';
+        } else if (state.status === 'in_progress') {
+          badgeClass = 'badge-secondary';
+          statusLabel = 'In Progress';
+          feedback = `<a href="task.html?id=${t.id}" style="color:var(--color-primary); font-weight:600;">Continue Answering →</a>`;
+        }
+
+        return `
+          <tr>
+            <td><strong>Task ${t.taskNumber}: ${t.title}</strong></td>
+            <td><span class="font-bold text-on-surface">${scoreDisplay}</span></td>
+            <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
+            <td style="font-size:13px; color:var(--color-on-surface);">${feedback}</td>
+          </tr>
+        `;
+      }).join('');
+    });
+  </script>
+</body>
+</html>

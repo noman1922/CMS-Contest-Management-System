@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACI Career Edge Program - Participant Profile</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/responsive.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body style="display:flex; flex-direction:column; min-height:100vh; background:#f8fafc;">
+
+  <!-- Header -->
+  <header style="height:64px; border-bottom:1px solid var(--color-outline-variant); background:#ffffff; display:flex; align-items:center; justify-content:space-between; padding:0 32px; position:sticky; top:0; z-index:100;">
+    <div class="flex items-center gap-4">
+      <a href="contests.html" class="flex items-center gap-2" style="text-decoration:none;">
+        <img src="../assets/logo.svg" alt="ACI Career Edge Program" style="height:30px; width:auto;"/>
+      </a>
+      <span style="color:var(--color-outline); font-size:18px;">/</span>
+      <a href="contests.html" class="btn-back-contests">
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+        <span>My Contests</span>
+      </a>
+      <span style="color:var(--color-outline); font-size:18px;">/</span>
+      <span class="font-headline font-semibold text-on-surface" style="font-size:14px;">Profile</span>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="demo-mode-pill">DEMO MODE · Participant</span>
+      <button type="button" class="btn-switch-role" onclick="AuthService.switchRole('admin')">
+        <span class="material-symbols-outlined" style="font-size:16px;">swap_horiz</span>
+        <span>Switch to Admin</span>
+      </button>
+      <button type="button" class="btn-logout" onclick="AuthService.logout()">
+        <span class="material-symbols-outlined" style="font-size:16px;">logout</span>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Profile Content -->
+  <main style="flex:1; max-width:860px; width:100%; margin:0 auto; padding:32px 24px;">
+
+    <!-- Top Card / Identity -->
+    <div class="profile-card" style="margin-bottom:24px;">
+      <div class="flex items-center gap-6">
+        <img id="profile-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Avatar" class="profile-avatar-large"/>
+        <div style="flex:1;">
+          <div class="flex items-center gap-3">
+            <h1 class="font-headline font-bold text-on-surface" id="profile-display-name" style="font-size:1.6rem; margin:0;">
+              Elena Rostova
+            </h1>
+            <span class="badge badge-primary font-bold" id="profile-display-id" style="font-size:12px; padding:3px 10px;">
+              Participant #027
+            </span>
+          </div>
+          <p style="font-size:13px; color:var(--color-on-surface-variant); margin:4px 0 0 0;" id="profile-display-meta">
+            Closed Platform Candidate • St. Jude Grammar School • North Western College
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Form Card -->
+    <div class="profile-card">
+      <div style="margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid var(--color-surface-container-high);">
+        <h2 class="font-headline font-bold text-on-surface" style="font-size:1.15rem; margin:0 0 4px 0;">
+          Account Details
+        </h2>
+        <span style="font-size:12px; color:var(--color-on-surface-variant);">
+          Your profile information is verified by the platform directorate.
+        </span>
+      </div>
+
+      <form id="profile-form" onsubmit="saveProfile(event)">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+          <div class="form-group">
+            <label class="form-label" for="inp-name">Full Name</label>
+            <input type="text" id="inp-name" class="form-input" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inp-pid">Participant ID (Immutable)</label>
+            <input type="text" id="inp-pid" class="form-input" readonly style="background:var(--color-surface-container-low); cursor:not-allowed;"/>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+          <div class="form-group">
+            <label class="form-label" for="inp-email">Email Address</label>
+            <input type="email" id="inp-email" class="form-input" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inp-phone">Phone Number</label>
+            <input type="text" id="inp-phone" class="form-input" placeholder="+8801XXXXXXXXX"/>
+          </div>
+        </div>
+
+        <div style="margin:20px 0 14px 0; padding-top:14px; border-top:1px solid var(--color-surface-container-high);">
+          <h3 class="font-bold text-on-surface" style="font-size:14px; margin:0 0 4px 0;">Education & Affiliation</h3>
+          <span style="font-size:12px; color:var(--color-on-surface-variant);">Institutional verification details</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+          <div class="form-group">
+            <label class="form-label" for="inp-school">School</label>
+            <input type="text" id="inp-school" class="form-input" placeholder="e.g. St. Jude Grammar School"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inp-college">College</label>
+            <input type="text" id="inp-college" class="form-input" placeholder="e.g. North Western College"/>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+          <div class="form-group">
+            <label class="form-label" for="inp-university">University (Optional)</label>
+            <input type="text" id="inp-university" class="form-input" placeholder="e.g. State University of Technology"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inp-address">Address / City (Optional)</label>
+            <input type="text" id="inp-address" class="form-input" placeholder="e.g. 42 Riverside Ave"/>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:24px;">
+          <label class="form-label" for="inp-bio">Brief Academic Summary / Bio (Optional)</label>
+          <textarea id="inp-bio" class="form-textarea" rows="3" placeholder="Tell us about your background or specialization..."></textarea>
+        </div>
+
+        <div class="flex items-center justify-between" style="padding-top:16px; border-top:1px solid var(--color-surface-container-high);">
+          <span style="font-size:12px; color:var(--color-on-surface-variant);">
+            Leaderboards display only your Participant ID for privacy.
+          </span>
+          <button type="submit" class="btn btn-primary" style="padding:10px 24px;">
+            <span class="material-symbols-outlined" style="font-size:16px;">save</span>
+            <span>Save Profile</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+  <footer style="text-align:center; padding:16px; color:var(--color-on-surface-variant); font-size:12px; border-top:1px solid var(--color-outline-variant); background:#ffffff;">
+    ACI Career Edge Program • Closed Enterprise Contest Platform Demo
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+
+  <script>
+    let currentParticipant = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      currentParticipant = AuthService.requireAuth('participant');
+      if (!currentParticipant) return;
+
+      loadProfile();
+    });
+
+    function loadProfile() {
+      const user = StorageService.getUser(currentParticipant.participantId) || currentParticipant;
+
+      document.getElementById('profile-display-name').textContent = user.name || 'Elena Rostova';
+      document.getElementById('profile-display-id').textContent = `Participant ${user.participantId || '#027'}`;
+      document.getElementById('profile-display-meta').textContent = `Closed Platform Candidate • ${user.school || 'St. Jude Grammar School'} • ${user.college || 'North Western College'}`;
+      if (user.avatar) document.getElementById('profile-avatar').src = user.avatar;
+
+      document.getElementById('inp-name').value = user.name || '';
+      document.getElementById('inp-pid').value = user.participantId || '#027';
+      document.getElementById('inp-email').value = user.email || '';
+      document.getElementById('inp-phone').value = user.phone || '+8801700000027';
+      document.getElementById('inp-school').value = user.school || 'St. Jude Grammar School';
+      document.getElementById('inp-college').value = user.college || 'North Western College';
+      document.getElementById('inp-university').value = user.university || 'State University of Technology';
+      document.getElementById('inp-address').value = user.address || '42 Riverside Ave, District 4';
+      document.getElementById('inp-bio').value = user.bio || 'Corporate Strategy & Quantitative Economics track participant.';
+    }
+
+    function saveProfile(e) {
+      e.preventDefault();
+
+      const updates = {
+        name: document.getElementById('inp-name').value.trim(),
+        email: document.getElementById('inp-email').value.trim(),
+        phone: document.getElementById('inp-phone').value.trim(),
+        school: document.getElementById('inp-school').value.trim(),
+        college: document.getElementById('inp-college').value.trim(),
+        university: document.getElementById('inp-university').value.trim(),
+        address: document.getElementById('inp-address').value.trim(),
+        bio: document.getElementById('inp-bio').value.trim()
+      };
+
+      StorageService.updateUser(currentParticipant.id || currentParticipant.participantId, updates);
+      UI.showToast('Profile updated successfully!', 'success');
+      loadProfile();
+    }
+  </script>
+</body>
+</html>
